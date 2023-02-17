@@ -1,0 +1,91 @@
+﻿body {
+    background-color: lightblue;
+    background-image: url(../images/back.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align:center;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    padding-left: 20px;
+}
+
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+
+        .navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
+
+
+
+h2 {
+    padding-top: 15px;  
+}
+
+.login {
+    background-color:lightblue;
+    width:30%;
+    text-align:center;
+    position: absolute;
+    top: 25%;
+    left:33%;
+    border:5px;
+    border-radius:5px;
+}
+
+.register {
+    background-color: lightblue;
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 33%;
+    border: 5px;
+    border-radius: 5px;
+    padding-bottom: 15px;
+}
+
+
+.form_field {
+    padding: 8px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid green;
+    border-radius:5px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color:green;
+    cursor:pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+input[type=submit]:hover {
+    background-color: #4CAF50;
+    
+}
+

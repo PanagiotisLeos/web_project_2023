@@ -1,0 +1,143 @@
+﻿header{
+    background-color:lightblue;
+    height:50%;
+}
+
+/* .navbar {
+    background-color: black;
+    top:0;
+
+}   
+
+.navbar a {
+    display:flex;
+    float:right;
+}
+*/
+
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; 
+    top: 0%; 
+    width: 100%; 
+    padding-left: 20px;
+}
+
+    
+.navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+        
+.navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
+
+
+
+
+body {
+    background-color: lightblue;
+    background-image: url(../images/back.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+
+
+.label {
+    width: 150px;
+}
+
+.input {
+    width: 40%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid green;
+    box-sizing: border-box;
+}
+
+form {
+    border:3px;
+}
+
+.form_field {
+    padding: 8px;
+    text-align:right;
+}
+
+.login {
+    border-radius: 5px;
+    background-color: lightblue;
+    width: 75%;
+    clear: both;
+    padding:10px;
+}
+
+.hints {
+    width:400px;
+}
+
+h2 {
+    text-align:center;
+    font-weight: 700;
+    padding: 20px;
+    font-family: CeraGR_Bold;
+}
+
+h4{
+    text-align:center;
+}
+
+.center {
+    align-content:   center;
+}
+
+.left {
+    float:left;
+    text-align:left;
+    width:350px;
+}
+
+
+.button {
+    border-radius: 5px;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    
+}
+
+.label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+.container {
+    align-content:center;   
+    padding:25px;
+}
+
+#mapid {
+    height: 400px;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    margin: 0px;
+    position: absolute;
+}

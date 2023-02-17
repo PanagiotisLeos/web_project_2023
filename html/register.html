@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resgister</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="index.html">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#">Προφίλ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html">Sign in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="register">
+        <h2> REGISTER </h2>
+        <form method="post" action="get-data.php">
+
+            <div class="form_field">
+                <input name="username" type="text" placeholder="Username" />
+            </div>
+            <div class="form_field">
+
+                <input name="email" type="email" placeholder="Email adress">
+            </div>
+            <div class="form_field">
+
+
+                <input name="password" type="password" placeholder="Password" minlength="8"
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                       title="Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιέχει τουλάχιστον ένα κεφαλαίο γράμμα, ένα αριθμό
+και κάποιο σύμβολο">
+            </div>
+            <div class="form_field">
+                <input type="submit" value="Sign up">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
