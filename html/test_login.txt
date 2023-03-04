@@ -1,0 +1,18 @@
+<div class="login">
+                    <h4> LOGIN </h4>
+                    <form method="post" action="get-data.php">
+                        <div class="form_field">
+                            <label>  Email: </label>
+                            <input name="email" type="email">
+                        </div>
+                        <div class="form_field">
+                            <label> Password: </label>
+
+                            <input name="mysecret" type="password">
+                        </div>
+                        <div class="form_field">
+                            <input type="submit" value="Sign in">
+                        </div>
+                        <p> Dont have an account? Sign up</p>
+                    </form>
+                </div>
