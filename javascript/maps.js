@@ -1,6 +1,6 @@
 var mymap = L.map('mapid')
 var osmUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-var osmAttrib = 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+var osmAttrib = 'Map data ï¿½ <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
 
 var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
 
@@ -31,7 +31,8 @@ let controlSearch = new L.Control.Search({
     propertyName: "title",
     initial: false,
     zoom: 20,
-    marker: false
+    marker: false,
+    textPlaceholder: "Search for supermarkets"
 });
 
 mymap.addControl(controlSearch);
@@ -51,3 +52,6 @@ var featuresLayer = new L.GeoJSON(data, {
     }
 });
 featuresLayer.addTo(mymap);
+
+
+            

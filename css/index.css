@@ -141,3 +141,17 @@ h4{
     margin: 0px;
     position: absolute;
 }
+
+/* 
+#search-bar {
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 100px);
+    z-index: 999;
+}
+*/
+
+.leaflet-control-search {
+    display: block !important;
+  }
+  
