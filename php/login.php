@@ -1,40 +1,52 @@
 <?php
+// Start the session
+session_start();
+
+// Include the database connection file (assuming db.php contains the necessary database connection code)
 $database = 'C:\xampp\htdocs\web_project\php\db.php';
-include $database ;
+include $database;
 
-$email = $_POST['email'];
+// Check if the request method is POST and if email and password fields are set
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+    // Get the submitted email and password
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+    // Validate and sanitize the email and password inputs (you may use additional validation as needed)
 
-if ( !isset($_POST['email'], $_POST['password']) ) {
-	
-		exit('Please fill both the email and password fields!');
-	} 
+    // Prepare and execute a query to fetch the user with the submitted email from the database
+    if ($stmt = $conn->prepare('SELECT * FROM user WHERE email = ?')) {
+        $stmt->execute([$email]);
+        $stmt->store_result();
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
-		// get the submitted username and password
-		$email = $_POST['email'];
-		$password = $_POST['password'];
+        // Check if a user with the given email exists in the database
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($user_id, $user_email, $hashed_password);
+            $stmt->fetch();
 
-if ($stmt = $conn->prepare('SELECT * FROM user WHERE email = ?')); {
- 	$stmt->execute([$email]);
-  	$stmt->store_result();
-	$user = $stmt->fetch();
+            // Verify the password hash
+            if (password_verify($password, $hashed_password)) {
+                // Store relevant user information in the session
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['email'] = $user_email;
 
-	if ($stmt->num_rows > 0) {
-		
-	
-		if (password_verify($password, $user['password'])) {
-    	$_SESSION['email'] = $email;
-		echo 'Welcome ' . $_SESSION['email'] . '!';
+                // Send a response indicating successful login
+                echo 'Welcome ' . $_SESSION['email'] . '!';
+            } else {
+                // Incorrect password
+                echo 'Incorrect email and/or password!';
+            }
+        } else {
+            // User with the given email not found
+            echo 'User not found!';
+        }
 
-		} else {
-			// Incorrect password
-			echo 'Incorrect email and/or password!';
-		} 
-	}
-$stmt->close();
-} 
-	}
+        $stmt->close();
+    }
+} else {
+    // If email and password fields are not set
+    exit('Please fill both the email and password fields!');
+}
 
 
 /*

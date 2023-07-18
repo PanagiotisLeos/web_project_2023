@@ -5,7 +5,7 @@
         if(email!="" && password!="" ){
             $.ajax({
                 type: "POST",
-                url: "../php/test.php",
+                url: "../php/logi.php",
                 data: {
                 email: email,
                 password: password
@@ -17,6 +17,9 @@
                 success: function (data) {
                     if(data)
                     {
+                        $_SESSION['user_id'] = $user['id'];
+                        header('Location: index.html');
+                        exit;
                         window.location("../html/index.html");
                     }
                 console.log('Login successfull');
