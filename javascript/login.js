@@ -5,7 +5,7 @@ $("#login_form").on("submit" , function (event) {
     if( email =='' || password ==''){
         alert("Please fill all fields...!!!!!!");
     } else {
-        $.post("../php/test.php" , {email:email , password: password} , function(response) { 
+        $.post("../php/login.php" , {email:email , password: password} , function(response) { 
         
             if (response == 0) {
                 alert ("Invalid Email or Password!");
