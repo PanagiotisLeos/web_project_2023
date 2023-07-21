@@ -1,64 +1,21 @@
-    $("#login_button").on(click,function () {
-        var email=$("#email").val();
-        var password=$("#password").val();
-    
-        if(email!="" && password!="" ){
-            $.ajax({
-                type: "POST",
-                url: "../php/logi.php",
-                data: {
-                email: email,
-                password: password
-                },
-                cache: false,
-                beforeSend:function(){
-                    $('#login_button').val("Connecting...");
-                },
-                success: function (data) {
-                    if(data)
-                    {
-                        $_SESSION['user_id'] = $user['id'];
-                        header('Location: index.html');
-                        exit;
-                        window.location("../html/index.html");
-                    }
-                console.log('Login successfull');
-    }
-})
-       }
-       else{
-        alert('Please fill all the field !');
-    }
-    });
-
-    
-
-/* var loginForm = document.getElementById("login");
-var loginButton = document.getElementById("login_button");
-
-function login() {
-    e.preventDefault();
-        var email=$("email").val();
-        var password=$("password").val();
-
-        if(email!="" && password!="" ){
-
-            $.ajax({
-                type: "POST",
-                url: "../php/test.php",
-                data: {
-                email: email,
-                password: password
-        },
-        cache: false,
-        success: function (response) {
-            if(response == "success")
-            {
-                window.location.replace("../html/index.html");
+$("#login_form").on("submit" , function (event) {
+    event.preventDefault();
+    var email=$("#email").val();
+    var password=$("#password").val();
+    if( email =='' || password ==''){
+        alert("Please fill all fields...!!!!!!");
+    } else {
+        $.post("../php/test.php" , {email:email , password: password} , function(response) { 
+        
+            if (response == 0) {
+                alert ("Invalid Email or Password!");
             }
-            console.log('Login successfull');
-        }
-    })
-           }
-        } ; */
-    
+            else if(response == 1) {
+                window.location.href = "../html/index.html";
+            }
+
+        });
+    }
+
+});
+
