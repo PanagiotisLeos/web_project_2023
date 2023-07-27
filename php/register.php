@@ -7,7 +7,7 @@ $username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-$query = "INSERT INTO user (username, email, password) VALUES ('$username', '$email','$password')";
+$query = "INSERT INTO user (username, email, password) VALUES ('$username', '$email',PASSWORD('$password'))";
 
 if (mysqli_query($conn,$query)) {   
     echo 1;

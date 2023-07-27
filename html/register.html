@@ -43,10 +43,9 @@
             <div class="form_field">
 
 
-                <input name="password" type="password" placeholder="Password" minlength="8"
-                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                       title="Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιέχει τουλάχιστον ένα κεφαλαίο γράμμα, ένα αριθμό
-και κάποιο σύμβολο" id="password">
+                <input name="password" type="password" placeholder="Password" 
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                       title="Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιέχει τουλάχιστον ένα κεφαλαίο γράμμα, ένα αριθμό και κάποιο σύμβολο" id="password">
             </div>
             <div class="form_field">
                 <input type="submit" value="Sign up">

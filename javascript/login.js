@@ -11,7 +11,7 @@ $("#login_form").on("submit" , function (event) {
                 alert ("Invalid Email or Password!");
             }
             else if(response == 1) {
-                window.location.href = "../html/index.html";
+                window.location.href = "../html/user_home.html";
             }
 
         });
