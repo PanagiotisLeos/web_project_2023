@@ -10,20 +10,14 @@ mymap.setView([38.246242, 21.7350847], 16);
 
 
 
-let markersLayer = L.layerGroup(); //layer contain searched elements
+
 
 mymap.addLayer(markersLayer);
 
 
 
-var data = [
-    { "loc": [41.575330, 13.102411], "title": "aquamarine" },
-    { "loc": [41.575730, 13.002411], "title": "black" },
-    { "loc": [41.807149, 13.162994], "title": "blue" },
-    { "loc": [41.507149, 13.172994], "title": "chocolate" },
-    { "loc": [41.847149, 14.132994], "title": "coral" },
-];
 
+let markersLayer = L.layerGroup(); //layer contain searched elements
 markersLayer.addTo(mymap);
 let controlSearch = new L.Control.Search({
     position: "topright",
@@ -54,4 +48,6 @@ var featuresLayer = new L.GeoJSON(data, {
 featuresLayer.addTo(mymap);
 
 
-            
+
+
+
