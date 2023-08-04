@@ -13,10 +13,11 @@ $row = mysqli_num_rows($result);
 if ($row == 1) {
         $data = mysqli_fetch_assoc($result);
         $_SESSION['email'] = $data['email'];
+        $_SESSION['username'] = $data ['username'];
+        $_SESSION['id'] = $data['user_id'];
         echo 1;
     }
     else {
-        $_SESSION['email'] = "";
         echo 0;
     }
     
