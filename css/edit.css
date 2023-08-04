@@ -1,0 +1,76 @@
+.side-nav{
+    width: 15%;
+    height: 75%;
+    background-color: lightblue;
+    position: fixed;
+  }
+
+#box {
+    top: 10%;
+    width: 80%;
+    height: 75%;
+    position: absolute;
+    align-self: center;
+    background-color: lightblue;
+}
+
+  .row{
+    background-color: rgb(13 204 251);
+    height: 500px;
+    position: relative;
+    top: 75px
+  }
+
+  .nav-link {
+    list-style: none;
+    position: relative;
+    color: white;
+  }
+
+  a.nav-link.active {
+    background-color: rgb(13 204 251)!important;
+}
+
+a.nav-link:hover {
+  background-color: rgb(13 204 251);
+}
+
+  .nav-item-side{
+    width: 160px;
+    padding: 10px;
+  }
+
+  .nav-item-bottom {
+    width: 160px;
+    padding: 10px;
+    bottom: 0;
+    position: absolute;
+  }
+
+
+  .page {
+    display: none;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  .p-3 {
+    position: relative;
+    left: -12%;
+    height: 500px; 
+    width: fit-content;
+  }
+
+  .edit {
+    width: 60%;
+    position: absolute;
+    top: 15%;
+    left: 24%;
+    padding-bottom: 15px;
+  }
+
+  input {
+    width: 50% !important;
+  }
