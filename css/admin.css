@@ -1,0 +1,28 @@
+.width_50{
+    width: 80%;
+    float: left;
+}
+
+label {
+    float: left;
+}
+
+h4 {
+    float: left;
+}
+
+button[type=submit]{
+    background-color:green;
+    cursor:pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+input[type=submit]:hover {
+    background-color: #4CAF50;
+}
+
+.del{
+    background-color: red !important;
+}

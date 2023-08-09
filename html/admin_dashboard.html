@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/edit.css" type="text/css">
     <link rel="stylesheet" href="../css/index.css" type="text/css">
     <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <link rel="stylesheet" href="../css/admin.css" type="text/css">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src = "../javascript/edit.js"></script>
     <script src = "../javascript/logout.js"></script>
@@ -45,16 +46,16 @@
       <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item-side">
-                <a class="nav-link text-white active" aria-current="page" href="#" onclick="showPage('prof_edit')">Επεξεργασία</a>
+                <a class="nav-link text-white active" aria-current="page" href="#" onclick="showPage('products')">Προϊόντα</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#" onclick="showPage('reviews')">Αξιολογήσεις</a>
+                  <a class="nav-link text-white" href="#" onclick="showPage('stores')">Καταστήματα</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#">Προσφορές</a>
+                  <a class="nav-link text-white" href="#">Σταστιστικά</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#">Ιστορικό</a>
+                  <a class="nav-link text-white" href="#">Leaderboard</a>
           </li>
           <li class="nav-item-bottom">
             <a class="nav-link text-white" href="#" id="logout">Log out</a>
@@ -66,48 +67,47 @@
     
 
 <div class="col-md-9">
-  <div id="prof_edit" class="page active">
-    <h2> Επεξεργασία </h2>
-      <div class="edit">
-        <form method="post" id="edit_form">
 
-          <div class="form_field">
-            <input class="input-prof" name="email" type="email" placeholder="Email adress" id="email" disabled readonly>
-          </div>
 
-          <div class="form_field">
-            
-            <input class="input-prof" name="username" type="text" placeholder="Username" id="new_usr"/>
-          </div>
-          
-          <div class="form_field">
-            <input class="input-prof" name="password" type="password" placeholder=" Old password" id="old_pwd" 
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-              title="Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιέχει τουλάχιστον ένα κεφαλαίο γράμμα, ένα αριθμό και κάποιο σύμβολο" id="password">
-          </div>
-          <div class="form_field">
-            <input class="input-prof" name="password" type="password" placeholder=" New password" id="new_pwd" 
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-              title="Ο κωδικός πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιέχει τουλάχιστον ένα κεφαλαίο γράμμα, ένα αριθμό και κάποιο σύμβολο" id="password">
-          </div>
-          <div class="form_field">
-            <input class="input-prof" type="submit" value="Save">
-          </div>
+  <div id="products" class="page active">
+    <h2> Ενημέρωση δεδομένων προϊόντων </h2>
+      <div class="right-page">
+      <div>
+        <h4>Kατηγορίες και υποκατηγορίες</h4>
+        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
+            <label for="dataFile">Ενημέρωση κατηγοριών και υποκατηγοριών: </label>
+            <input type="file" id="dataFile" name="dataFile" accept=".json" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+      <h4>Τιμές προϊόντων</h4>
+        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
+            <label for="dataFile">Ενημέρωση τιμών προϊόντων: </label>
+            <input type="file" id="dataFile" name="dataFile" accept=".json" required>
+            <button type="submit">Upload</button>
         </form>
       </div>
   </div>
 
-  <!-- Reviews -->
-  <div id="reviews" class="page">
-          <h1> DA </h1>
-        </div>
+  
+  <div id="stores" class="page">
+          <h2> Ενημέρωση δεδομένων καταστήματων </h2>
+          <form class="width_50" action="../php/store_update.php" method="POST" enctype="multipart/form-data">
+            <label for="geojsonFile">Select GeoJSON File:</label>
+            <input type="file" id="geojsonFile" name="geojsonFile" accept=".geojson" required>
+            <button type="submit">Upload</button>
+        </form>
 
-      </div>
+        <form  method="get">
+          <button class="del" type="submit" onclick="confirm()" > Delete all</button>
+          </form>
     </div>
 </div>
 
+
+
+
     <script>
-      // Add your JavaScript code here
       function showPage(pageId) {
           // Hide all pages
           const pages = document.querySelectorAll('.page');
@@ -129,11 +129,4 @@
             clickedButton.classList.add('active');
         }
       }
-
   </script>
-
-    <script src = "../javascript/logout.js"></script>
-    <script src = "../javascript/edit.js"></script>
-    <script>fetchUserDetails();</script>
-
-

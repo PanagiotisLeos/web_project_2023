@@ -63,7 +63,7 @@ a.nav-link:hover {
     width: fit-content;
   }
 
-  .edit {
+  .right-page {
     width: 60%;
     position: absolute;
     top: 15%;
@@ -71,6 +71,6 @@ a.nav-link:hover {
     padding-bottom: 15px;
   }
 
-  input {
+  .input-prof {
     width: 50% !important;
   }

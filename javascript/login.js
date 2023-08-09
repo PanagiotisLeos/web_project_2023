@@ -13,6 +13,9 @@ $("#login_form").on("submit" , function (event) {
             else if(response == 1) {
                 window.location.href = "../html/user_home.html";
             }
+            else if(response == 2) {
+                window.location.href = "../html/admin.html";
+            }
 
         });
     }
