@@ -18,11 +18,11 @@ if ($row == 1) {
         $_SESSION['username'] = $data ['username'];
         $_SESSION['id'] = $data['user_id'];
 
-        if ($data['is_admin'] = 0) {
+        if ($data['is_admin'] == 0) {
             echo 1;
             }
 
-        if ($data['is_admin'] = 1) {
+        if ($data['is_admin'] == 1) {
             echo 2;
         }
     }

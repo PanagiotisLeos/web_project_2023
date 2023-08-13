@@ -24,7 +24,7 @@
     <div class="container-fluid">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a href="index.html">Home</a>
+                <a href="user_home.html">Home</a>
             </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -48,7 +48,7 @@
                 <a class="nav-link text-white active" aria-current="page" href="#" onclick="showPage('prof_edit')">Επεξεργασία</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#" onclick="showPage('reviews')">Αξιολογήσεις</a>
+                  <a id="test" class="nav-link text-white" href="#" onclick="showPage('reviews')">Αξιολογήσεις</a>
           </li>
           <li class="nav-item-side">
                   <a class="nav-link text-white" href="#">Προσφορές</a>
@@ -99,41 +99,23 @@
 
   <!-- Reviews -->
   <div id="reviews" class="page">
-          <h1> DA </h1>
+          <h2> Αξιολογήσεις </h2>
         </div>
 
       </div>
     </div>
 </div>
 
-    <script>
-      // Add your JavaScript code here
-      function showPage(pageId) {
-          // Hide all pages
-          const pages = document.querySelectorAll('.page');
-          pages.forEach(page => page.classList.remove('active'));
 
-          // Show the selected page
-          const selectedPage = document.getElementById(pageId);
-          if (selectedPage) {
-              selectedPage.classList.add('active');
-          }
+      
 
-          // Remove 'active' class from all menu buttons
-        const menuButtons = document.querySelectorAll('.nav-link');
-        menuButtons.forEach(button => button.classList.remove('active'));
-
-        // Add 'active' class to the clicked menu button
-        const clickedButton = document.querySelector(`[onclick="showPage('${pageId}')"]`);
-        if (clickedButton) {
-            clickedButton.classList.add('active');
-        }
-      }
 
   </script>
 
     <script src = "../javascript/logout.js"></script>
     <script src = "../javascript/edit.js"></script>
     <script>fetchUserDetails();</script>
+    <script>redirect();</script>
+    
 
 

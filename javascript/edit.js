@@ -38,6 +38,41 @@ $("#edit_form").on("submit" , function (event) {
     }
 });
 
+      // Add your JavaScript code here
+      function showPage(pageId) {
+        
+    
+          // Hide all pages
+          const pages = document.querySelectorAll('.page');
+          pages.forEach(page => page.classList.remove('active'));
+
+          // Show the selected page
+          const selectedPage = document.getElementById(pageId);
+          if (selectedPage) {
+              selectedPage.classList.add('active'); 
+          }
+
+          // Remove 'active' class from all menu buttons
+        const menuButtons = document.querySelectorAll('.nav-link');
+        menuButtons.forEach(button => button.classList.remove('active'));
+
+        // Add 'active' class to the clicked menu button
+        const clickedButton = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+        if (clickedButton) {
+            clickedButton.classList.add('active');
+        }
+      }
+
+
+
+function redirect(){
+    let param = new URLSearchParams(document.location.search);
+    const name = param.get('page');
+    if (name) {
+    showPage(name);
+    console.log(name);
+    }
+}
 
 /*function populateFormWithUserDetails() {
     fetchUserDetails()

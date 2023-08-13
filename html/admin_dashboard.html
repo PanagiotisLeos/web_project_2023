@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/admin.css" type="text/css">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src = "../javascript/edit.js"></script>
-    <script src = "../javascript/logout.js"></script>
 
    
 
@@ -25,12 +24,12 @@
     <div class="container-fluid">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a href="index.html">Home</a>
+                <a href="admin.html">Home</a>
             </li>
         </ul>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a href="user_profile.html">Προφίλ</a>
+                <a href="admin_dashboard.html">Προφίλ</a>
             </li>
             <li class="nav-item">
                 <a href="login.html">Sign in</a>
@@ -72,18 +71,25 @@
   <div id="products" class="page active">
     <h2> Ενημέρωση δεδομένων προϊόντων </h2>
       <div class="right-page">
-      <div>
-        <h4>Kατηγορίες και υποκατηγορίες</h4>
-        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
-            <label for="dataFile">Ενημέρωση κατηγοριών και υποκατηγοριών: </label>
+      
+        <h4>Προϊόντα</h4>
+        <form class="width_50" action="../php/price_update.php?x=1" method="POST" enctype="multipart/form-data">
+            <label for="dataFile">Ενημέρωση προϊόντων: </label>
             <input type="file" id="dataFile" name="dataFile" accept=".json" required>
             <button type="submit">Upload</button>
         </form>
-    </div>
+
+        <h4>Kατηγορίες και υποκατηγορίες</h4>
+        <form class="width_50" action="" method="POST" enctype="multipart/form-data">
+            <label for="catFile">Ενημέρωση κατηγοριών και υποκατηγοριών: </label>
+            <input type="file" id="dataFile" name="catFile" value="categories" accept=".json" required>
+            <button type="submit">Upload</button>
+        </form>
+    
       <h4>Τιμές προϊόντων</h4>
-        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
-            <label for="dataFile">Ενημέρωση τιμών προϊόντων: </label>
-            <input type="file" id="dataFile" name="dataFile" accept=".json" required>
+        <form class="width_50" action="../php/price_update.php?x=3" method="POST" enctype="multipart/form-data">
+            <label for="catFile">Ενημέρωση τιμών προϊόντων: </label>
+            <input type="file" id="priceFile" name="priceFile" value="prices" accept=".json" required>
             <button type="submit">Upload</button>
         </form>
       </div>
@@ -130,3 +136,4 @@
         }
       }
   </script>
+      <script src = "../javascript/logout.js"></script>
