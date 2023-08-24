@@ -7,7 +7,7 @@ $userId = $_SESSION['id'];
 $x = $_GET['x'];
 
 if ($x == 1){
-    $query1 = "SELECT product.name as product_name, offers.price as price, offers.date as offer_date, user.username as username , offers.stock as stock
+    $query1 = "SELECT product.name as product_name, offers.price as price, offers.date as offer_date, user.username as username , offers.stock as stock , offers.id as offer_id
     FROM offers 
     INNER JOIN product ON offers.product_id = product.id
     INNER JOIN user ON offers.user_id = user.user_id

@@ -5,14 +5,9 @@ var osmAttrib = 'Map data � <a href="https://openstreetmap.org">OpenStreetMap<
 var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
 
 mymap.addLayer(osm);
-
 mymap.setView([38.246242, 21.7350847], 16);
-
-
-
-
-
 mymap.addLayer(markersLayer);
+
 
 
 

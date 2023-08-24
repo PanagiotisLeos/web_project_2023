@@ -7,6 +7,7 @@ function fetchUserDetails() {
         success: function(userDetails) {
             $('#new_usr').val(userDetails.username);
             $('#email').val(userDetails.email);
+            document.getElementById("score").textContent =(userDetails.score);
         },
         error: function(xhr, status, error) {
             console.error(xhr, status, error);
