@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="../css/edit.css" type="text/css">
     <link rel="stylesheet" href="../css/index.css" type="text/css">
     <link rel="stylesheet" href="../css/login.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src = "../javascript/edit.js"></script>
     <script src = "../javascript/logout.js"></script>
 
@@ -32,9 +31,6 @@
             <li class="nav-item">
                 <a href="user_profile.html">Προφίλ</a>
             </li>
-            <li class="nav-item">
-                <a href="login.html">Sign in</a>
-            </li>
         </ul>
     </div>
 </nav>
@@ -52,7 +48,7 @@
                   <a id="test" class="nav-link text-white" href="#" onclick="showPage('reviews')">Αξιολογήσεις</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#">Προσφορές</a>
+                  <a id ="offers-btn"class="nav-link text-white" href="#" onclick="showPage('offers')">Προσφορές</a>
           </li>
           <li class="nav-item-side">
                   <a class="nav-link text-white" href="#">Ιστορικό</a>
@@ -60,11 +56,17 @@
           <li class="nav-item-bottom">
             <a class="nav-link text-white" href="#" id="logout">Log out</a>
           </li>
+          <li style=" position: relative; top:27%">
+            <div class="icon"  onclick="showPage('offers')">
+            <h4 id="score"> </h4>
+            <i class="fa-regular fa-star fa-1x"></i>
+          </div>
+          <div class="icon"  onclick="showPage('reviews')">
+            <h4 id="tokens"> </h4>
+            <i class="fa-regular fa-brands fa-bitcoin fa-1x"></i>
+          </div>
+          </li>
         </ul>
-        <div style="position: relative; bottom: 10%;">
-          <h3 id="score"> </h3>
-          <i class="fa-regular fa-star"  ></i>
-        </div>
         </div>
       </div>
   
@@ -103,13 +105,33 @@
   </div>
 
   <!-- Reviews -->
-  <div id="reviews" class="page">
+    <div id="reviews" class="page">
           <h2> Αξιολογήσεις </h2>
-        </div>
+    </div>
 
-      </div>
+      
+
+  <!-- Reviews -->
+  <div id = "offers" class="page">
+    <h2>Προσφορές</h2>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
     </div>
 </div>
+
+ 
+
 
 
       
@@ -119,7 +141,7 @@
 
     <script src = "../javascript/logout.js"></script>
     <script src = "../javascript/edit.js"></script>
-    <script>fetchUserDetails();</script>
-    
+    <script>fetchUserDetails();</script> 
+    <script>document.getElementById("offers-btn").addEventListener("click",fetchUserOffers); </script> 
 
 

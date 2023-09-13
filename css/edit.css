@@ -74,3 +74,12 @@ a.nav-link:hover {
   .input-prof {
     width: 50% !important;
   }
+
+  table {
+    width: 100%;
+  }
+
+  .icon{
+    display: inline-block;
+    margin: 19px; 
+  }

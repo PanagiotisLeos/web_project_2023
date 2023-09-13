@@ -263,5 +263,19 @@ function populateCategoryDropdown(categories) {
     option.textContent = category;
     selectElement.appendChild(option);
   });
-}
+
+  $("#calc_tokens").on("submit" , function (event) {
+    event.preventDefault();
+        $.post("../php/tokens.php" , function(response) { 
+        
+            if (response == 0) {
+                alert ("Invalid Email or Password!");
+            }
+            else if(response == 1) {
+                alert ("tokens distributed");
+            }
+
+        });
+    });
+  }
 

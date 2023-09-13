@@ -105,6 +105,7 @@
     <script>searchByAjax(); </script>
     
     <script>
+      // Get the modal
   $('#exampleModalCenter').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var storeId = button.data('storeid'); // Extract the store_id from data attribute
@@ -120,24 +121,42 @@
       success: function(response) {
 
         $('#modal-body').empty();
-       
+        $('#savebutton').addClass('review-action')
+
       response.forEach(function (offer) {
         var offerTile = `
           <div class="offer-tile">
             <h5> ${offer.product_name}</h5>
             <p>Τιμή: ${offer.price}</p>
-            <p>stock: ${offer.stock}</p>
+            <p>Διαθέσιμο:  <select id="stockDropdown" data-offer-id="${offer.offer_id}"> <option value=" ${offer.stock}" selected> ${offer.stock} </option> 
+              ${offer.stock == 'ΝΑΙ'? `<option value="ΟΧΙ">ΟΧΙ</option>`:'' }
+              ${offer.stock == 'ΟΧΙ'? `<option value="ΝΑΙ">ΝΑΙ</option>`:'' }
+              </select> </p> 
             <p>Χρήστης: ${offer.username}</p>
             <p>Ημερομηνία: ${offer.offer_date}</p>
-            <button id ="like" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="like()">Like</button>
-            <button id ="dislike" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="dislike()">Dislike</button>
+            <button id ="like" class="selected" data-offer-id="<%= offer.id %>" onclick="like()">
+              <i class = "fa fa-thumbs-up fa-lg"></i>  
+              <span class = "like_count"> </span>
+              
+            </button>
+            <button id ="dislike" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="dislike()">
+              <i class = "fa fa-thumbs-down fa-lg"></i>  
+            </button>
             <hr>
             </div>
         `;
         $('#modal-body').append(offerTile);
-          
       })
-    
+
+      var stockDropdown = document.getElementById('stockDropdown');          
+      stockDropdown.addEventListener('change', function() {
+        const selectedValue = this.value; // Get the selected value
+        $.post("../php/update_stock.php" ,{offer_id:stockDropdown.getAttribute("data-offer-id") ,stock:selectedValue} ),function(response){
+          if (response == 1) {
+            alert("stock changed");
+          }
+        }
+      });
     
       },
       error: function(jqXHR, textStatus, errorThrown) {
@@ -153,7 +172,9 @@
       dataType: "json",
       success: function (data) {
         $('#modal-body').empty();
-        
+        $('#savebutton').addClass('submit-action')
+
+
         var dropdown = `
               <div id="modal-body" class="modal-body">
               <select id="categoryDropdown">
@@ -210,27 +231,24 @@
     
           });
   document.getElementById('saveButton').addEventListener('click', function() {
-  // Get the selected values from the dropdown
   const selectedProduct = document.getElementById('categoryDropdown').value;
   const price = document.getElementById('price').value;
   const stock = document.querySelector('input[name="stock"]:checked').value;
+      var requestData = {
 
-  // Create an object with the selected data
-  var requestData = {
-    
-  };
-
+      };
   // Make an AJAX request to insert data
   $.post('../php/submit_offers.php', { store_id: storeId, product: selectedProduct,price: price,stock:stock} , function(response) {
       if (response == 1){
+        $('#exampleModalCenter').modal('hide')
         alert("Successfully added");
         searchByAjax();
             };
-    }
-   
-  );
-});
-  }
+    });
+  
+}
+    )  }
+  
 });
 
 

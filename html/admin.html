@@ -25,12 +25,14 @@
     crossorigin=""></script>
  
     <script src="../javascript/leaflet-search.js"></script>
+    <script src="../javascript/tokens.js"></script>
    
 
 
 </head>
 <body>
 
+  
 
     <!--
         <header>
@@ -81,7 +83,11 @@
         </div>
       </div>
 
-
+      <div>
+      <form style="position: absolute;" id = "calc_tokens">
+        <button class="del" type="submit"> tokens</button>
+        </form>
+      </div>
 
     <script src="../javascript/map_admin.js"></script>
     <script>searchByAjax(); </script>
@@ -90,7 +96,6 @@
     $('#exampleModalCenter').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var storeId = button.data('storeid'); // Extract the store_id from data attribute
-  console.log(button);
 
   if(button.is('#btn-review')) {
   // Make an AJAX request to fetch data based on storeId

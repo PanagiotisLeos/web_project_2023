@@ -13,10 +13,10 @@ if ($x == 1){
     INNER JOIN user ON offers.user_id = user.user_id
     WHERE store_id = $storeId
     ";
-    $t=mysqli_query($conn,$query1);
-        
+    $result=mysqli_query($conn,$query1);
+    
     $J=[];
-    while($r=mysqli_fetch_assoc($t))
+    while($r=mysqli_fetch_assoc($result))
     {
         $J[]=$r;
     }

@@ -3,11 +3,13 @@ function fetchUserDetails() {
     $.ajax({
         url: '../php/user_info.php',
         type: 'POST',
+        data: {x:1},
         dataType: 'json' ,
         success: function(userDetails) {
             $('#new_usr').val(userDetails.username);
             $('#email').val(userDetails.email);
             document.getElementById("score").textContent =(userDetails.score);
+            document.getElementById("tokens").textContent =(userDetails.tokens);
         },
         error: function(xhr, status, error) {
             console.error(xhr, status, error);
@@ -75,19 +77,43 @@ function redirect(){
     }
 }
 
-/*function populateFormWithUserDetails() {
-    fetchUserDetails()
-        .done(function (userDetails) {
-            alert(JSON.stringify(userDetails, null, 2));
-            $('#new_usr').val("userDetails.username");
-            $('#email').val(userDetails.email);
-            // Update other form fields with user details as needed
-        })
-        .fail(function (error) {
-            console.error(error);
-            // Handle error, e.g., show an error message to the user
-        });
-}*/
+function generateOffersHistory(offers) {
+    var html = '<table>';
+    html +='<h2>Προσφορές</h2>';
+    html += '<tr><th></th><th>Store Name</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Date</th></tr>';
+    
+    for (var i = 0; i < offers.length; i++) {
+        html += '<tr>';
+        html += '<td>' + (i + 1) + '</td>';
+        html += '<td>' + offers[i].store_name + '</td>';
+        html += '<td>' + offers[i].product_name + '</td>';
+        html += '<td>' + offers[i].price + '</td>';
+        html += '<td>' + offers[i].stock + '</td>';
+        html += '<td>' + offers[i].date + '</td>';
+        html += '</tr>';
+    }
+    
+    html += '</table>';
+    return html;
+}
+
+
+function fetchUserOffers() {
+    $.ajax({
+        url: '../php/user_info.php',
+        type: 'POST',
+        data: {x:2},
+        dataType: 'json' ,
+        success: function(userOffers) {
+            var OffrersHtml = generateOffersHistory(userOffers);
+            $('#offers').html(OffrersHtml);
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr, status, error);
+        }
+    });
+}
+
 
 
 

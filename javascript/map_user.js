@@ -89,8 +89,8 @@ var showNoOfferStores = L.control({position: 'topleft'});
 };
 showNoOfferStores.addTo(map);
 
-map.locate({ setView: true, maxZoom: 13 });
-lc = L.control.locate({ initialZoomLevel: 14, flyTo: true }).addTo(mymap);
+map.locate({ setView: true, maxZoom: 20 });
+lc = L.control.locate({ initialZoomLevel: 13, flyTo: true }).addTo(mymap);
 
 
 
@@ -260,145 +260,36 @@ function populateCategoryDropdown(categories) {
   });
 }
 
-  
+$('#like,#dislike').on('click', function(){
+  $clicked_btn = this;
+  var data = {
+    offer_id : $(this).data('offer_id'),
+    react : $(this).hasClass('like') ? 'like' : 'dislike',
+  };
 
-
-
-
-
-
-
-
-
-
-/*
-
- ${markerData.offer.map(offer => `<li>${offer}</li>`).join('')} 
-
-
-function showStoresOnMap() {
-  $.get("../php/stores.php").then(function (res) {
-    var stores = JSON.parse(res);
-    storeMarkers(stores);
-  });
-}
-
-
-function storeMarkers(stores) {
-  for (i in stores) {
-    let name = stores[i].name;
-    let marker = L.marker(
-      L.latLng([stores[i].latitude, stores[i].longtitude]),
-      {
-        name: name,
+  $.ajax({
+    url: '../php/rae.php',
+    type: 'post',
+    data: data,
+    success: function(response){
+      
+      if (response = "new"){
         
       }
-    );
-    marker.bindPopup("<b>" + name + "</b>");
-    marker.addTo(markersLayer);
-  }
-}
-
- $.ajax({
-      url: '../php/stores.php', // Your PHP script to search stores by name
-      type: 'GET',
-      data: { name: text },
-      dataType: 'json',
-      success: function(json) {
-          // Loop through the search results (store data)
-          json.forEach(function(storeData) {
-              var storeLocation = L.latLng(storeData.latitude, storeData.longitude);
-
-              // Create a popup content for the store
-              var popupContent = `
-                  <div>
-                      <h3>${storeData.name}</h3>
-                      <!-- Other store info -->
-                  </div>
-              `;
-
-              // Create a temporary marker and bind the custom popup
-              var marker = L.marker(storeLocation)
-                  .bindPopup(popupContent)
-                  .addTo(tempMarkersLayer);
-          });
-
-          // Add the temporary markers layer to the map
-          tempMarkersLayer.addTo(map);
-
-          // Call the response function to populate the search results dropdown
-          callResponse(json.map(store => store.name)); // Populate dropdown with store names
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          console.error('AJAX Error:', errorThrown);
+      
+      if (action == "like") {
+        $clicked_btn.removeClass('fa-thumbs-o-up');
+        $clicked_btn.addClass('fa-thumbs-up');
+      } else if(action == "unlike") {
+        $clicked_btn.removeClass('fa-thumbs-up');
+        $clicked_btn.addClass('fa-thumbs-o-up');
       }
-  });
-}
 
+      $clicked_btn.siblings('span.likes').text(res.likes);
+      $clicked_btn.siblings('span.dislikes').text(res.dislikes);
 
- `
-          <div class='popup'>
-              <h3>${title}</h3>
-              <p style='font-weight:bold'>Offers</p>
-              <p>Product: ${markerData.product_name}</p>
-              <p>Price: ${markerData.price}</p>
-              <ul>
-              
-              </ul>
-              ${distance < 500 ? '<button id="popupButton">Υποβολή προσφοράς</button>':""}
-              ${distance < 500 ? '<button id="popupButton">Αξιολόγηση</button>':""}
-          </div>`;
+      $clicked_btn.siblings('i.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-o-down');
+    }
+  });		
 
-
-
-          function createPopupContent() {
-  var content = '<div class="popup">';
-  content += '<h3>${title}</h3>'; // Replace with actual store name
-  content += '<p style="font-weight: bold;">Offers</p>';
-
-  offers.forEach(function(offer) {
-    content += `<p>Product: ${offer.productName}</p>`;
-    content += `<p>Price: ${offer.price}</p>`;
-  });
-
-  content += '</div>';
-  return content;
-}
-
-
-
-
-
-
-SWSTOOOOOOOOOOOOOOOO
-if (markerData.price == null || markerData.price == undefined) {
-          var popupContent =  `
-          <div class='popup'>
-              <h3>${title}</h3>
-              ${distance < 500 ? '<button id="popupButton">Υποβολή προσφοράς</button>':""}
-          </div>`;
-
-            var marker = L.marker(
-            [markerData.latitude, markerData.longitude],{title: title, icon: greenIcon})
-            marker.bindPopup(popupContent)
-            markersLayer.addLayer(marker);
-            markersLayer.removeFrom(map);
-        }
-
-var OfferspopupContent =`
-          <div class='popup'>
-            <h3>${title}</h3>
-            <p style='font-weight:bold'>Offers</p>
-            ${offers.map(offer => `
-              <p>Product: ${offer.product_name}</p>
-              <p>Price: ${offer.price}</p>
-            `).join('')}
-            ${distance < 500 ? '<button id="popupButton">Υποβολή προσφοράς</button>':''}
-            ${distance < 500 ? '<button id="popupButton">Αξιολόγηση</button>':''}
-          </div>`;
-
-          var marker = L.marker(
-            [markerData.latitude, markerData.longitude],{title: title, icon: orangeIcon , category:markerData.category_name})
-            marker.bindPopup(OfferspopupContent)
-            offersMarkersLayer.addLayer(marker);
-*/
+});
