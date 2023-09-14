@@ -11,29 +11,35 @@ include $database ;
     
     
     $jsonContent = file_get_contents($filePath);
+    if ($jsonContent === false) {
+        echo "Error: Unable to read JSON file.";
+    } else {
     $data = json_decode($jsonContent, true);
-    
+    if ($data === null) {
+        echo "Error: Unable to decode JSON content.";
+    } else {
+     $sqlValues = [];   
     foreach ($data["data"] as $product) {
         $productId = $product["id"];
     
         foreach ($product["prices"] as $priceData) {
             $date = $priceData["date"];
             $price = $priceData["price"];
-    
-            $sql = "INSERT ignore INTO price (product_id, date, price) 
-            VALUES ('$productId', '$date', '$price')";
-    
-            if ($conn->query($sql) !== TRUE) {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+            $sqlValues[] = "('$productId', '$date', '$price')";
+
+           
             }
         }
     }
+    $sql = "INSERT IGNORE INTO price (product_id, date, price) VALUES " . implode(", ", $sqlValues);
+   if ($conn->query($sql) !== TRUE) {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+   }
     }
         }
+    }
 
 
 $conn->close();
-
-$success = "true";
-header( 'Location: ../html/admin_dashboard.html?success='.$success);
+echo("ok");
 ?>

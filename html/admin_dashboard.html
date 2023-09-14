@@ -71,7 +71,7 @@
       <div class="right-page">
       
         <h4>Προϊόντα</h4>
-        <form class="width_50" action="../php/price_update.php?x=1" method="POST" enctype="multipart/form-data">
+        <form class="width_50" action="../php/products_update.php" method="POST" enctype="multipart/form-data">
             <label for="dataFile">Ενημέρωση προϊόντων: </label>
             <input type="file" id="dataFile" name="dataFile" accept=".json" required>
             <button type="submit">Upload</button>
@@ -85,7 +85,7 @@
         </form>
     
       <h4>Τιμές προϊόντων</h4>
-        <form class="width_50" action="../php/price_update.php?x=3" method="POST" enctype="multipart/form-data">
+        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
             <label for="catFile">Ενημέρωση τιμών προϊόντων: </label>
             <input type="file" id="priceFile" name="priceFile" value="prices" accept=".json" required>
             <button type="submit">Upload</button>
