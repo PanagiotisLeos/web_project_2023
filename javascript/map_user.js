@@ -260,36 +260,4 @@ function populateCategoryDropdown(categories) {
   });
 }
 
-$('#like,#dislike').on('click', function(){
-  $clicked_btn = this;
-  var data = {
-    offer_id : $(this).data('offer_id'),
-    react : $(this).hasClass('like') ? 'like' : 'dislike',
-  };
 
-  $.ajax({
-    url: '../php/rae.php',
-    type: 'post',
-    data: data,
-    success: function(response){
-      
-      if (response = "new"){
-        
-      }
-      
-      if (action == "like") {
-        $clicked_btn.removeClass('fa-thumbs-o-up');
-        $clicked_btn.addClass('fa-thumbs-up');
-      } else if(action == "unlike") {
-        $clicked_btn.removeClass('fa-thumbs-up');
-        $clicked_btn.addClass('fa-thumbs-o-up');
-      }
-
-      $clicked_btn.siblings('span.likes').text(res.likes);
-      $clicked_btn.siblings('span.dislikes').text(res.dislikes);
-
-      $clicked_btn.siblings('i.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-o-down');
-    }
-  });		
-
-});

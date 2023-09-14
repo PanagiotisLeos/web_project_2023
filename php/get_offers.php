@@ -7,7 +7,14 @@ $userId = $_SESSION['id'];
 $x = $_GET['x'];
 
 if ($x == 1){
-    $query1 = "SELECT product.name as product_name, offers.price as price, offers.date as offer_date, user.username as username , offers.stock as stock , offers.id as offer_id
+    $query1 = "SELECT 
+    product.name as product_name,
+    offers.price as price, 
+    offers.date as offer_date, 
+    user.username as username , 
+    offers.stock as stock , 
+    offers.id as offer_id ,
+    (SELECT react from ratings where ratings.offer_id = offers.id and user.user_id = user.user_id) as user_reaction
     FROM offers 
     INNER JOIN product ON offers.product_id = product.id
     INNER JOIN user ON offers.user_id = user.user_id

@@ -32,3 +32,12 @@ function lboard(){
         return html;
     }
 };
+
+
+function delAllStores() {
+    $.get("../php/store_update.php",function(response){
+        if(response == 1) {
+            alert("Deleted successfully")
+        }
+    })
+  };

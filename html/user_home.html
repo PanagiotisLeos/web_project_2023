@@ -1,36 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prosfores pantou</title>
-    <link rel="icon" href="../images/icon.png">
+    <link rel="icon" href="../images/icon.png" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/index.css" type="text/css">
-    <link rel="stylesheet" href="../css/map_test.css" type="text/css">
-    <link rel="stylesheet" href="../css/leaflet-search.css"/>
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/index.css" type="text/css" />
+    <link rel="stylesheet" href="../css/map_test.css" type="text/css" />
+    <link rel="stylesheet" href="../css/leaflet-search.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
- 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
- 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
     <script src="../javascript/leaflet-search.js"></script>
-
-
-</head>
-<body>
-
-
+  </head>
+  <body>
     <!--
         <header>
             <h2> Discover the best deals around you </h2>
@@ -38,144 +50,197 @@
         </header>
     -->
 
-
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a href="user_home.html">Home</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-              <i class="fa-regular fa-user" style="color: white; align-items: center; display: flex;"></i>
-                <li class="nav-item">
-                    <a href="user_profile.html">Προφίλ</a>
-                </li>
-                
-            </ul>
-        </div>
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a href="user_home.html">Home</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <i
+            class="fa-regular fa-user"
+            style="color: white; align-items: center; display: flex"
+          ></i>
+          <li class="nav-item">
+            <a href="user_profile.html">Προφίλ</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-
-            </div>
-            <div class="col-sm-4">
-
-            </div>
-            <div class="col-sm-4">
-            </div>
-        </div>
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+      </div>
     </div>
-    <!--
-            <div class="text-center">
-                <button class="button">Get your location!</button>
-            </div>
-    -->
+   
 
+    <div id="map"></div>
 
-
-    <div id="map">    
-    </div>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Αξιολόγηση</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div id="modal-body" class="modal-body">
-              <select id="categoryDropdown">
-                <option value="">Select a Category</option>
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="saveButton">Save changes</button>
-            </div>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Αξιολόγηση</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modal-body" class="modal-body">
+            <select id="categoryDropdown">
+              <option value="">Select a Category</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="saveButton">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
-    
+    </div>
+
     <script src="../javascript/map_user.js"></script>
-    <script>searchByAjax(); </script>
-    
+    <script>
+      searchByAjax();
+    </script>
+
     <script>
       // Get the modal
-  $('#exampleModalCenter').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var storeId = button.data('storeid'); // Extract the store_id from data attribute
-  console.log(button);
+      $("#exampleModalCenter").on("show.bs.modal", function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var storeId = button.data("storeid"); // Extract the store_id from data attribute
+        console.log(button);
 
-  if(button.is('#btn-review')) {
-  // Make an AJAX request to fetch data based on storeId
-  $.ajax({
-      url: '../php/get_offers.php',
-      type: 'GET',
-      data: { store_id: storeId , x:1 },
-      dataType: 'json',
-      success: function(response) {
+        if (button.is("#btn-review")) {
+          // Make an AJAX request to fetch data based on storeId
+          $.ajax({
+            url: "../php/get_offers.php",
+            type: "GET",
+            data: { store_id: storeId, x: 1 },
+            dataType: "json",
+            success: function (response) {
+              $("#modal-body").empty();
+              $("#savebutton").addClass("review-action");
 
-        $('#modal-body').empty();
-        $('#savebutton').addClass('review-action')
-
-      response.forEach(function (offer) {
-        var offerTile = `
+              response.forEach(function (offer) {
+                var offerTile = `
           <div class="offer-tile">
             <h5> ${offer.product_name}</h5>
             <p>Τιμή: ${offer.price}</p>
-            <p>Διαθέσιμο:  <select id="stockDropdown" data-offer-id="${offer.offer_id}"> <option value=" ${offer.stock}" selected> ${offer.stock} </option> 
-              ${offer.stock == 'ΝΑΙ'? `<option value="ΟΧΙ">ΟΧΙ</option>`:'' }
-              ${offer.stock == 'ΟΧΙ'? `<option value="ΝΑΙ">ΝΑΙ</option>`:'' }
+            <p>Διαθέσιμο:  <select class="stock" id="stockDropdown" data-offer-id="${offer.offer_id}"> <option value=" ${offer.stock}" selected> ${offer.stock} </option> 
+              ${offer.stock == "ΝΑΙ" ? `<option value="ΟΧΙ">ΟΧΙ</option>` : ""}
+              ${offer.stock == "ΟΧΙ" ? `<option value="ΝΑΙ">ΝΑΙ</option>` : ""}
               </select> </p> 
             <p>Χρήστης: ${offer.username}</p>
             <p>Ημερομηνία: ${offer.offer_date}</p>
-            <button id ="like" class="selected" data-offer-id="<%= offer.id %>" onclick="like()">
+            
+            <button id ="like" class="ratebtn like ${offer.user_reaction == 2 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-up fa-lg"></i>  
               <span class = "like_count"> </span>
               
             </button>
-            <button id ="dislike" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="dislike()">
+            <button id ="dislike" class="ratebtn dislike ${offer.user_reaction == 1 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-down fa-lg"></i>  
             </button>
             <hr>
             </div>
-        `;
-        $('#modal-body').append(offerTile);
-      })
+            `;
+                $("#modal-body").append(offerTile);
+              });
 
-      var stockDropdown = document.getElementById('stockDropdown');          
-      stockDropdown.addEventListener('change', function() {
-        const selectedValue = this.value; // Get the selected value
-        $.post("../php/update_stock.php" ,{offer_id:stockDropdown.getAttribute("data-offer-id") ,stock:selectedValue} ),function(response){
-          if (response == 1) {
-            alert("stock changed");
-          }
-        }
-      });
-    
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          console.error('AJAX Error:', errorThrown);
-      }
-  });
-}
-  else if(button.is('#btn-new-offer')){
-    $.ajax({
-      type: "GET",
-      url: "../php/get_offers.php",
-      data: { store_id: storeId , x:2},
-      dataType: "json",
-      success: function (data) {
-        $('#modal-body').empty();
-        $('#savebutton').addClass('submit-action')
+              let stockDropdown = document.querySelectorAll(".stock");
 
+              for (i of stockDropdown){
+              i.addEventListener("change", function () {
+                const selectedValue = this.value; 
+                console.log(selectedValue);
+                $.post("../php/update_stock.php", {
+                  offer_id: this.getAttribute("data-offer-id"),
+                  stock: selectedValue,
+                },function (response) {
+                    if (response == 1) {
+                      searchByAjax();
+                    }
+                  });
+              });
+            }
+              let btns = document.querySelectorAll(".ratebtn");
 
-        var dropdown = `
+              for (i of btns) {
+                i.addEventListener("click", function () {
+                  var clicked_btn = this.id;
+                  var offer_id = this.getAttribute("data-offer-id");
+                  var data = {
+                    offer_id: offer_id,
+                    cur_react: $(this).is("#like") ? 2 : 1,
+                  };
+
+                  $.ajax({
+                    url: "../php/rate.php",
+                    type: "post",
+                    data: data,
+                    success: function (response) {
+                      var likebtn = $(".like[data-offer-id=" + offer_id + "]");
+                      var dislikebtn = $(
+                        ".dislike[data-offer-id=" + offer_id + "]",
+                      );
+                      if (response === "newlike") {
+                        likebtn.addClass("selected");
+                      } else if (response === "newdislike") {
+                        dislikebtn.addClass("selected");
+                      } else if (response === "liketodislike") {
+                        likebtn.removeClass("selected");
+                        dislikebtn.addClass("selected");
+                      } else if (response === "disliketolike") {
+                        dislikebtn.removeClass("selected");
+                        likebtn.addClass("selected");
+                      } else if (response === "delete") {
+                        likebtn.removeClass("selected");
+                        dislikebtn.removeClass("selected");
+                      }
+                    },
+                  });
+                });
+              }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.error("AJAX Error:", errorThrown);
+            },
+          });
+        } else if (button.is("#btn-new-offer")) {
+          $.ajax({
+            type: "GET",
+            url: "../php/get_offers.php",
+            data: { store_id: storeId, x: 2 },
+            dataType: "json",
+            success: function (data) {
+              $("#modal-body").empty();
+              $("#savebutton").addClass("submit-action");
+
+              var dropdown = `
               <div id="modal-body" class="modal-body">
               <select id="categoryDropdown">
                 <option value="">Επίλεξε ενα προϊόν</option>
@@ -191,86 +256,71 @@
               <label for="no">ΟΧΙ</label>
               </form>
                           
-              `
-              
-              $('#modal-body').append(dropdown);
+              `;
 
+              $("#modal-body").append(dropdown);
 
-        const combinedDropdown = document.getElementById('categoryDropdown');
-        data.forEach(category => {
-        const categoryOption = document.createElement('option');
-        categoryOption.value = category.id;
-        categoryOption.textContent = category.name;
-        combinedDropdown.appendChild(categoryOption);
+              const combinedDropdown =
+                document.getElementById("categoryDropdown");
+              data.forEach((category) => {
+                const categoryOption = document.createElement("option");
+                categoryOption.value = category.id;
+                categoryOption.textContent = category.name;
+                combinedDropdown.appendChild(categoryOption);
 
+                if (category.subcategories) {
+                  for (const subcategoryId in category.subcategories) {
+                    if (category.subcategories.hasOwnProperty(subcategoryId)) {
+                      const subcategory = category.subcategories[subcategoryId];
+                      const subcategoryOption =
+                        document.createElement("option");
+                      subcategoryOption.value = subcategory.id;
+                      subcategoryOption.textContent = `- ${subcategory.name}`;
+                      combinedDropdown.appendChild(subcategoryOption);
 
-
-  if (category.subcategories) {
-    for (const subcategoryId in category.subcategories) {
-      if (category.subcategories.hasOwnProperty(subcategoryId)) {
-        const subcategory = category.subcategories[subcategoryId];
-        const subcategoryOption = document.createElement('option');
-        subcategoryOption.value = subcategory.id;
-        subcategoryOption.textContent = `- ${subcategory.name}`;
-        combinedDropdown.appendChild(subcategoryOption);
-
-        if (subcategory.products) {
-          subcategory.products.forEach(product => {
-            const productOption = document.createElement('option');
-            productOption.value = product.id;
-            productOption.textContent = `-- ${product.name}`;
-            combinedDropdown.appendChild(productOption);
+                      if (subcategory.products) {
+                        subcategory.products.forEach((product) => {
+                          const productOption =
+                            document.createElement("option");
+                          productOption.value = product.id;
+                          productOption.textContent = `-- ${product.name}`;
+                          combinedDropdown.appendChild(productOption);
+                        });
+                      }
+                    }
+                  }
+                }
+              });
+            },
           });
+          document.getElementById("saveButton").addEventListener("click", function () {
+              const selectedProduct =
+                document.getElementById("categoryDropdown").value;
+              const price = document.getElementById("price").value;
+              const stock = document.querySelector(
+                'input[name="stock"]:checked',
+              ).value;
+              var requestData = {};
+              // Make an AJAX request to insert data
+              $.post(
+                "../php/submit_offers.php",
+                {
+                  store_id: storeId,
+                  product: selectedProduct,
+                  price: price,
+                  stock: stock,
+                },
+                function (response) {
+                  if (response == 1) {
+                    $("#exampleModalCenter").modal("hide");
+                    alert("Successfully added");
+                    searchByAjax();
+                  }
+                },
+              );
+            });
         }
-      }
-    }
-  }
-});
-
-           }
-    
-          });
-  document.getElementById('saveButton').addEventListener('click', function() {
-  const selectedProduct = document.getElementById('categoryDropdown').value;
-  const price = document.getElementById('price').value;
-  const stock = document.querySelector('input[name="stock"]:checked').value;
-      var requestData = {
-
-      };
-  // Make an AJAX request to insert data
-  $.post('../php/submit_offers.php', { store_id: storeId, product: selectedProduct,price: price,stock:stock} , function(response) {
-      if (response == 1){
-        $('#exampleModalCenter').modal('hide')
-        alert("Successfully added");
-        searchByAjax();
-            };
-    });
-  
-}
-    )  }
-  
-});
-
-
+      });
     </script>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
+  </body>
 </html>

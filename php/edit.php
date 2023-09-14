@@ -26,25 +26,4 @@ echo 0;
 }
 
 }
-
-
-
-
-
-
-
-
-
-/* 
-
-echo $id;
-$query = "UPDATE `user` SET `username`='$new_username', `password`='$new_password' WHERE user_id = $id";
-
-$query1 = "SELECT * FROM user WHERE user_id = $id and password = PASSWORD('$old_password')";
-$result = mysqli_query($conn,$query1); 
-$row = mysqli_num_rows($result);
-
-if ($row == 1) { 
-    
-*/
 ?>
