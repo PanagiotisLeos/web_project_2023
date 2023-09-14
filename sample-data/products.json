@@ -1,0 +1,71 @@
+{
+  "fetch_date": 1669214001,
+  "products": [
+    {
+      "id": "194",
+      "name": "Heineken Μπύρα 6X330ml",
+      "category": "3",
+      "subcategory": "5"
+    },
+   {
+      "id": "472",
+      "name": "Amstel Μπύρα Premium Quality 0,5λιτ",
+      "category": "3",
+      "subcategory": "5"
+    },
+    {
+      "id": "669",
+      "name": "Amstel Μπύρα 6Χ330ml",
+      "category": "3",
+      "subcategory": "5"
+    },
+{
+      "id": "995",
+      "name": "Κρασί Της Παρέας Λευκό 1λιτ",
+      "category": "3",
+      "subcategory": "6"
+    },
+{
+      "id": "61",
+      "name": "Moscato DΑsti Casarito Κρασί 750ml",
+      "category": "3",
+      "subcategory": "6"
+    },
+{
+      "id": "814",
+      "name": "Axe Αποσμ Σπρέυ Dark Temptation 150ml",
+      "category": "4",
+      "subcategory": "7"
+    },
+{
+      "id": "387",
+      "name": "Noxzema Αποσμ Rollon Classic 50ml",
+      "category": "4",
+      "subcategory": "7"
+    },
+{
+      "id": "885",
+      "name": "Dove Αποσμ Σπρέυ 150ml",
+      "category": "4",
+      "subcategory": "7"
+    },
+{
+      "id": "458",
+      "name": "Μέγα Βαμβάκι 100γρ",
+      "category": "4",
+      "subcategory": "8"
+    },
+{
+      "id": "755",
+      "name": "Septona Σαμπουάν Και Αφρόλουτρο Βρεφικό Με Αλοη 500ml",
+      "category": "1",
+      "subcategory": "2"
+    },
+{
+      "id": "1020",
+      "name": "Γιώτης Sanilac 2 Γάλα Σε Σκόνη Δεύτερης Βρεφικής Ηλικίας 400γρ",
+      "category": "1",
+      "subcategory": "2"
+    }
+]
+}
