@@ -45,23 +45,23 @@
                 <a class="nav-link text-white active" aria-current="page" href="#" onclick="showPage('prof_edit')">Επεξεργασία</a>
           </li>
           <li class="nav-item-side">
-                  <a id="test" class="nav-link text-white" href="#" onclick="showPage('reviews')">Αξιολογήσεις</a>
+                  <a id="ratings-btn" class="nav-link text-white" href="#" onclick="showPage('ratings')">Αξιολογήσεις</a>
           </li>
           <li class="nav-item-side">
                   <a id ="offers-btn"class="nav-link text-white" href="#" onclick="showPage('offers')">Προσφορές</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#">Ιστορικό</a>
+                  <a id= "points-btn" class="nav-link text-white" href="#" onclick="showPage('points')">Πόντοι </a>
           </li>
           <li class="nav-item-bottom">
             <a class="nav-link text-white" href="#" id="logout">Log out</a>
           </li>
           <li style=" position: relative; top:27%">
-            <div class="icon"  onclick="showPage('offers')">
+            <div class="icon"  onclick="showPage('points')">
             <h4 id="score"> </h4>
             <i class="fa-regular fa-star fa-1x"></i>
           </div>
-          <div class="icon"  onclick="showPage('reviews')">
+          <div id="" class="icon"  onclick="showPage('points')">
             <h4 id="tokens"> </h4>
             <i class="fa-regular fa-brands fa-bitcoin fa-1x"></i>
           </div>
@@ -105,19 +105,32 @@
   </div>
 
   <!-- Reviews -->
-    <div id="reviews" class="page">
+    <div id="ratings" class="page">
           <h2> Αξιολογήσεις </h2>
     </div>
 
       
 
-  <!-- Reviews -->
+  <!-- offers -->
   <div id = "offers" class="page">
     <h2>Προσφορές</h2>
   </div>
-
-
-
+  
+  
+  
+  <!-- Poionts -->
+  <div id = "points" class="page">
+  <div>
+    <h2>Score</h2>
+    <p>Total:</p> <h3 id="tot-score"></h3>
+    <p>Current month:</p> <h3 id="cm-score"></h3>
+  </div>
+  <div>
+    <h2>Tokens</h2>
+    <p>Total:</p> <h3 id="tot-tokens"></h3>
+    <p>Last month:</p> <h3 id="lm-tokens"></h3>
+  </div>
+  </div>
 
 
 
@@ -143,5 +156,7 @@
     <script src = "../javascript/edit.js"></script>
     <script>fetchUserDetails();</script> 
     <script>document.getElementById("offers-btn").addEventListener("click",fetchUserOffers); </script> 
+    <script>document.getElementById("ratings-btn").addEventListener("click",fetchUserRatings); </script> 
+    <script>document.getElementById("points-btn").addEventListener("click",fetchUserPoints); </script> 
 
 
