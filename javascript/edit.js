@@ -15,6 +15,7 @@ function fetchUserDetails() {
             console.error(xhr, status, error);
         }
     });
+
 }
 
 $("#edit_form").on("submit" , function (event) {
@@ -114,13 +115,70 @@ function fetchUserOffers() {
     });
 }
 
+function RatingsHistory(ratings){
+    var html = '<table>';
+    html +='<h2>Αξιολογήσεις</h2>';
+    html += '<tr><th></th><th>Store Name</th><th>Date</th><th>User</th><th>React</th></tr>';
+    
+    for (var i = 0; i < ratings.length; i++) {
+        html += '<tr>';
+        html += '<td>' + (i + 1) + '</td>';
+        html += '<td>' + ratings[i].name + '</td>';
+        html += '<td>' + ratings[i].timestamp + '</td>';
+        html += '<td>' + ratings[i].username + '</td>';
+        if(ratings[i].react == 1){
+        html += '<td>' + "Disliked" + '</td>';
+        }
+        else if(ratings[i].react == 2){
+        html += '<td>' + "<b>Liked</b>" + '</td>';
+        }
+        html += '</tr>';
+    }
+    
+    html += '</table>';
+    return html;
+}
 
 
+function fetchUserRatings() {
+    $.ajax({
+        url: '../php/user_info.php',
+        type: 'POST',
+        data: {x:3},
+        dataType: 'json' ,
+        success: function(userRatings) {
+            var RatingsHtml = RatingsHistory(userRatings);
+            $('#ratings').html(RatingsHtml);
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr, status, error);
+        }
+    });
+}
 
 
+function fetchUserPoints(){
+    var totScoreElement = document.getElementById("tot-score");
+    var lmScoreElement = document.getElementById("cm-score");
+    var totTokensElement = document.getElementById("tot-tokens");
+    var lmTokensElement = document.getElementById("lm-tokens");
 
-
-
-
+    $.ajax({
+        url: '../php/user_info.php',
+        type: 'POST',
+        data: {x:4},
+        dataType: 'json' ,
+        success: function(userPoints) {
+            console.log(userPoints);
+            totScoreElement.textContent = (userPoints.score  );
+            lmScoreElement.textContent = (userPoints.cm_score !== null ? userPoints.cm_score : 0 );
+            totTokensElement.textContent = (userPoints.tokens);
+            lmTokensElement.textContent =(userPoints.lm_tokens !== null ? userPoints.lm_tokens : 0);
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr, status, error);
+        }
+    });
+}
  
   
