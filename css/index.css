@@ -54,6 +54,7 @@ body {
 
 
 .label {
+    
     width: 150px;
 }
 
@@ -67,6 +68,7 @@ body {
 
 form {
     border:3px;
+    overflow: hidden;
 }
 
 
@@ -85,11 +87,14 @@ form {
 h2 {
     text-align:center;
     font-weight: 700;
-    padding: 20px;
+    padding: 10px;
     font-family: CeraGR_Bold;
 }
 
 h4{
+    font-size: 24px;
+    clear: both; /* Clear the floating elements (e.g., floated form elements) */
+    margin-bottom: 5px; /* Add margin to create space below the headings */
     text-align:center;
 }
 
@@ -127,6 +132,7 @@ h4{
 .container {
     align-content:center;   
     padding:25px;
+   
 }
 
 #mapid {

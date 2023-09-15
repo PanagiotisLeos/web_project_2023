@@ -1,13 +1,19 @@
 .width_50{
-    width: 80%;
+    width: 90%;
     float: left;
 }
 
 label {
+    font-size: 16px;
+    display: block;
     float: left;
+    margin-top: 10px;
 }
 
 h4 {
+    font-size: 18px;
+    clear: both; /* Clear the floating elements (e.g., floated form elements) */
+    margin-bottom: 5px; /* Add margin to create space below the headings */
     float: left;
 }
 

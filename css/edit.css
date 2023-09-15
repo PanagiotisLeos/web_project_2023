@@ -16,7 +16,7 @@
 
   .row{
     background-color: rgb(13 204 251);
-    height: 500px;
+    height: 546px;
     position: relative;
     top: 75px
   }
@@ -59,14 +59,14 @@ a.nav-link:hover {
   .p-3 {
     position: relative;
     left: -12%;
-    height: 500px; 
+    height: 546px; 
     width: fit-content;
   }
 
   .right-page {
     width: 60%;
     position: absolute;
-    top: 15%;
+    top: 13%;
     left: 24%;
     padding-bottom: 15px;
   }
