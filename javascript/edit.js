@@ -81,7 +81,7 @@ function redirect(){
 function generateOffersHistory(offers) {
     var html = '<table>';
     html +='<h2>Προσφορές</h2>';
-    html += '<tr><th></th><th>Store Name</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Date</th></tr>';
+    html += '<tr><th></th><th>Κατάστημα</th><th>Προϊόν</th><th>Τιμή</th><th>ΔΙαθέσιμο</th><th>Ημερομηνία</th></tr>';
     
     for (var i = 0; i < offers.length; i++) {
         html += '<tr>';
@@ -118,20 +118,21 @@ function fetchUserOffers() {
 function RatingsHistory(ratings){
     var html = '<table>';
     html +='<h2>Αξιολογήσεις</h2>';
-    html += '<tr><th></th><th>Store Name</th><th>Date</th><th>User</th><th>React</th></tr>';
+    html += '<tr><th></th><th>Προϊόν</th><th>Τιμή</th><th>Χρήστης</th><th>Αντίδραση</th><th>Ημερομηνία</th></tr>';
     
     for (var i = 0; i < ratings.length; i++) {
         html += '<tr>';
         html += '<td>' + (i + 1) + '</td>';
         html += '<td>' + ratings[i].name + '</td>';
-        html += '<td>' + ratings[i].timestamp + '</td>';
+        html += '<td>' + ratings[i].price + '</td>';
         html += '<td>' + ratings[i].username + '</td>';
         if(ratings[i].react == 1){
-        html += '<td>' + "Disliked" + '</td>';
+            html += '<td style="color: red">' + "<i style='color: red' class = 'fa fa-thumbs-down fa-lg' ></i> " + '</td>';
         }
         else if(ratings[i].react == 2){
-        html += '<td>' + "<b>Liked</b>" + '</td>';
+            html += '<td>' + "<i style='color: blue' class = 'fa fa-thumbs-up fa-lg' ></i> " + '</td>';
         }
+        html += '<td>' + ratings[i].timestamp + '</td>';
         html += '</tr>';
     }
     

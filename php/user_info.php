@@ -46,7 +46,7 @@ if($x==2){
 }   
 
 if($x==3){
-    $query1 = "SELECT  product.name , user.username , react , timestamp 
+    $query1 = "SELECT  product.name , price, user.username , react , timestamp 
     from ratings
     INNER JOIN offers on offers.id = ratings.offer_id
     INNER JOIN product on offers.product_id = product.id

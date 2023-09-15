@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../css/login.css" type="text/css">
     <link rel="stylesheet" href="../css/admin.css" type="text/css">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <script src = "../javascript/admin.js"></script>
 
    
@@ -48,7 +51,7 @@
                   <a class="nav-link text-white" href="#" onclick="showPage('stores')">Καταστήματα</a>
           </li>
           <li class="nav-item-side">
-                  <a class="nav-link text-white" href="#">Σταστιστικά</a>
+                  <a class="nav-link text-white" href="#"onclick="showPage('graphs')">Σταστιστικά</a>
           </li>
           <li class="nav-item-side">
                   <a class="nav-link text-white" href="#"onclick="showPage('leaderboard')">Leaderboard</a>
@@ -123,10 +126,47 @@
     </div>
 
 
+  <div id="graphs" class="page">
+    <select id="monthSelect">
+      <!-- Options for selecting the month -->
+    </select>
+    <select id="yearSelect">
+      <!-- Options for selecting the year -->
+    </select>
+    <canvas id="chartContainer"></canvas>
+  </div>
+
+
   <div id="leaderboard" class="page">
       <h2>Leaderboard</h2>
   </div>
 
+  <script>
+    
+    const ctx = document.getElementById('chartContainer').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [], // Days of the selected month
+    datasets: [{
+      label: 'Offers Submitted',
+      data: [], // Number of offers submitted for each day
+      backgroundColor: 'red',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    
+      y: {
+        beginAtZero: true
+      }
+    },
+    // Chart options
+  
+});
+
+  </script>
 
 
 

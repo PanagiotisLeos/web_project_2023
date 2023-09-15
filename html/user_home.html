@@ -43,12 +43,7 @@
     <script src="../javascript/leaflet-search.js"></script>
   </head>
   <body>
-    <!--
-        <header>
-            <h2> Discover the best deals around you </h2>
-            <p style="text-align: right"> Loged as: </p>
-        </header>
-    -->
+
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
@@ -155,8 +150,6 @@
             
             <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="like" class="ratebtn like ${offer.user_reaction == 2 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-up fa-lg"></i>  
-              <span class = "like_count"> </span>
-              
             </button>
             <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="dislike" class="ratebtn dislike ${offer.user_reaction == 1 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-down fa-lg"></i>  
