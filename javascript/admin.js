@@ -42,6 +42,33 @@ function delAllStores() {
     })
   };
 
+<<<<<<< Updated upstream
+=======
+  function delAllProducts() {
+    
+    $.get("../php/products_update.php", function (response) {
+        if (response == 1) {
+            alert("All products deleted successfully");
+        } else {
+            alert("Failed to delete products");
+        }
+    });
+}
+
+
+function delAllCategories() {
+
+    $.get("../php/categories_update.php", function (response) {
+        if (response == 1) {
+            alert("All categories deleted successfully");
+        } else {
+            alert("Failed to delete categories");
+        }
+    });
+}
+
+
+>>>>>>> Stashed changes
 
   
 
@@ -118,6 +145,7 @@ function updateChart(data) {
   chart.update();
   }
 
+<<<<<<< Updated upstream
   document.getElementById('yearSelect').addEventListener('change', fetchDataAndRenderChart);
 
 
@@ -167,3 +195,6 @@ function delAllSubcategories() {
             }
         });
     }
+=======
+  document.getElementById('yearSelect').addEventListener('change', fetchDataAndRenderChart);
+>>>>>>> Stashed changes
