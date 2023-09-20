@@ -168,7 +168,7 @@ function searchByAjax(){
           ${storeData.offers.map(offer => `
             <p><b>${offer.product_name}</b></p>
             <p>Τιμή: <b> ${offer.price}€ </b> &nbsp; Διαθέσιμο: ${offer.stock} </p>
-            <button onclick="confirm("Διαγραφή προσφοράς ${offer.offerId}?")" id = "del-offer" data-offerid="${offer.offerId}">
+            <button id = "del-offer" data-offerid="${offer.offerId}">
             <i class="fa-solid fa-trash" style = "color:red"></i>
             </button>
             <hr>

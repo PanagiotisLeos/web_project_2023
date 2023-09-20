@@ -73,15 +73,16 @@
       <div class="right-page">
       
         <h4>Προϊόντα</h4>
-        <form class="width_50" action="../php/products_update.php" method="POST" enctype="multipart/form-data">
+        <form class="width_100" action="../php/products_update.php" method="POST" enctype="multipart/form-data">
             <p for="dataFile">Ενημέρωση προϊόντων: </p>
             <input type="file" id="dataFile" name="dataFile" accept=".json" required>
             <button type="submit">Upload</button>
+            <form  method="get">
+              <button class="del" type="submit" onclick="confirm('Θέλετε να διαγραφούν όλα τα προϊόντα?'); delAllProducts();" > Delete all</button>
+            </form>
         </form>
 
-        <form  method="get">
-          <button class="del" type="submit" onclick="confirm(); delAllProducts();" > Delete all</button>
-        </form>
+        
     
            
             
@@ -89,24 +90,30 @@
        
 
         <h4>Kατηγορίες</h4>
-        <form class="width_50" action="../php/categories_update.php" method="POST" enctype="multipart/form-data">
+        <form class="width_100" action="../php/categories_update.php" method="POST" enctype="multipart/form-data">
             <p for="catFile">Ενημέρωση κατηγοριών: </p>
             <input type="file" id="dataFile" name="catFile" value="categories" accept=".json" required>
             
             <button type="submit">Upload </button>
+
+            <form  method="get">
+              <button class="del" type="submit" onclick="confirm('Θέλετε να διαγραφούν όλα τα κατηγορίες?'); delAllCategories();" > Delete all</button>
+            </form>
             
         </form>
 
-        <form  method="get">
-          <button class="del" type="submit" onclick="confirm(); delAllCategories();" > Delete all</button>
-        </form>
+        
 
         <h4>Yποκατηγορίες</h4>
-        <form class="width_50" action="../php/subcategories_update.php" method="POST" enctype="multipart/form-data">
+        <form class="width_100" action="../php/subcategories_update.php" method="POST" enctype="multipart/form-data">
             <p for="subFile">Ενημέρωση υποκατηγοριών: </p>
             <input type="file" id="dataFile" name="subFile" value="subcategories" accept=".json" required>
             
             <button type="submit">Upload </button>
+
+            <form  method="get">
+              <button class="del" type="submit" onclick="confirm('Θέλετε να διαγραφούν όλες οι υποκατηγορίες?'); delAllProducts();" > Delete all</button>
+            </form>
            
         </form>
 
@@ -115,11 +122,15 @@
        </form>
     
       <h4>Τιμές προϊόντων</h4>
-        <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
+        <form class="width_100" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
             <p for="catFile">Ενημέρωση τιμών προϊόντων: </p>
             <input type="file" id="priceFile" name="priceFile" value="prices" accept=".json" required>
            
             <button type="submit">Upload</button>
+
+            <form  method="get">
+              <button class="del" type="submit" onclick="confirm('Θέλετε να διαγραφούν όλες οι τιμές προϊόντων?'); delAllProducts();" > Delete all</button>
+            </form>
            
         </form>  
         
@@ -134,24 +145,24 @@
   
   <div id="stores" class="page">
           <h2> Ενημέρωση δεδομένων καταστήματων </h2>
-          <form class="width_50" action="../php/store_update.php" method="POST" enctype="multipart/form-data">
-            <label for="geojsonFile">Select GeoJSON File:</label>
+          <form class="width_100" action="../php/store_update.php" method="POST" enctype="multipart/form-data">
+            <p>Ενημέρωση δεδομένων καταστήματων:</p>
             <input type="file" id="geojsonFile" name="geojsonFile" accept=".geojson" required>
             <button type="submit">Upload</button>
+
+            <form  method="get">
+              <button class="del" type="submit" onclick="confirm('Θέλετε να διαγραφούν όλα τα καταστήματα?'); delAllStores();" > Delete all</button>
+              </form>
         </form>
 
-        <form  method="get">
-          <button class="del" type="submit" onclick="confirm(); delAllStores();" > Delete all</button>
-          </form>
+        
     </div>
 
 
   <div id="graphs" class="page">
     <select id="monthSelect">
-      <!-- Options for selecting the month -->
     </select>
     <select id="yearSelect">
-      <!-- Options for selecting the year -->
     </select>
     <canvas id="chartContainer"></canvas>
   </div>

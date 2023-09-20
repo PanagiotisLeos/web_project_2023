@@ -5,15 +5,14 @@ include $database ;
 $offerId =$_POST['offer_id'];
 
 $query = "DELETE FROM offers WHERE id = $offerId";
+$result = mysqli_query($conn,$query); 
 
-if ($conn->query($query) !== TRUE) {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-else{
+if ($result) {
     echo 1;
 }
-
-
+else{
+    echo 0;
+}
 
 
 ?>
