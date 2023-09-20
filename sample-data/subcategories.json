@@ -1,0 +1,59 @@
+{
+    "subcategories": [
+        {
+            "id": "1",
+            "name": "Πάνες",
+            "category_id": "1"
+        },
+        {
+            "id": "2",
+            "name": "Γάλα",
+            "category_id": "1"
+        },
+        {
+            "id": "3",
+            "name": "Χαρτικά",
+            "category_id": "2"
+        },
+        {
+            "id": "4",
+            "name": "Αποσμητικά Χώρου",
+            "category_id": "2"
+        },
+        {
+            "id": "5",
+            "name": "Μπύρες",
+            "category_id": "3"
+        },
+        {
+            "id": "6",
+            "name": "Κρασιά",
+            "category_id": "3"
+        },
+        {
+            "id": "7",
+            "name": "Αποσμητικά",
+            "category_id": "4"
+        },
+        {
+            "id": "8",
+            "name": "Βαμβάκια",
+            "category_id": "4"
+        },
+        {
+            "id": "9",
+            "name": "Λαχανικά & Φρούτα",
+            "category_id": "5"
+        },
+        {
+            "id": "10",
+            "name": "Ψάρια & θαλασσινά",
+            "category_id": "5"
+        },
+        {
+            "id": "11",
+            "name": "Κρέας",
+            "category_id": "5"
+        }
+    ]
+}
