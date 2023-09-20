@@ -177,13 +177,14 @@ const chart = new Chart(ctx, {
     }]
   },
   options: {
-    
-      y: {
-        beginAtZero: true
-      }
-    },
-    // Chart options
-  
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+} 
 });
 
   </script>

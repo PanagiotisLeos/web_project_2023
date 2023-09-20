@@ -8,7 +8,7 @@ $year = $_GET["year"];
 
 
 
-$query = "SELECT COUNT(*) as number_of_offers, date from offers where Month(date) = $month and YEAR(date) = $year 
+$query = "SELECT COUNT(*) as number_of_offers, date from offers_history where Month(date) = $month and YEAR(date) = $year and action = 'created'
 GROUP by day(date)";
 
 $result=mysqli_query($conn,$query);
