@@ -66,6 +66,54 @@
       "name": "Γιώτης Sanilac 2 Γάλα Σε Σκόνη Δεύτερης Βρεφικής Ηλικίας 400γρ",
       "category": "1",
       "subcategory": "2"
+    },
+{
+      "id": "111",
+      "name": "ZEWA | Χαρτί Κουζίνας Wisch & Weg Extra Lang 2 Τεμάχια",
+      "category": "2",
+      "subcategory": "3"
+    },
+{
+      "id": "112",
+      "name": "ZEWA | Χαρτί Υγείας Chamomile Comfort 3 Φύλλα 8 Τεμάχια",
+      "category": "2",
+      "subcategory": "3"
+    },
+{
+      "id": "113",
+      "name": "KLEENEX | Χαρτί Υγείας Capitonne 14+4 Δώρο",
+      "category": "2",
+      "subcategory": "3"
+    },
+{
+      "id": "114",
+      "name": "MMMILK | Γάλα Οικογενειακό Ελαφρύ 1.5lt",
+      "category": "1",
+      "subcategory": "2"
+    },
+{
+      "id": "115",
+      "name": "PAMPERS | Πάνες βρακάκι Μωρού Premium Pants Νο5 12-17kg 34 Τεμάχια",
+      "category": "1",
+      "subcategory": "1"
+    },
+{
+      "id": "116",
+      "name": "GLADE | Αποσμητικό Χώρου Sandalwood & Jasmine Ανταλλακτικό 538ml",
+      "category": "2",
+      "subcategory": "4"
+    },
+{
+      "id": "117",
+      "name": "AIRWICK | Αρωματικό Χώρου Freshmatic Vanilla & Orchid Ανταλλακτικό 2x250ml",
+      "category": "2",
+      "subcategory": "4"
+    },
+{
+      "id": "118",
+      "name": "GLADE | Αρωματικό Χώρου Spray Romantic Vanilla 300ml",
+      "category": "2",
+      "subcategory": "4"
     }
 ]
 }
