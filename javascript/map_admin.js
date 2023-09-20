@@ -1,6 +1,5 @@
 var map = L.map('map').setView([38.246242, 21.7350847], 16);
 
-var simulatedUserLocation = L.latLng(38.246242, 21.7350847);
 
 var greenIcon = new L.Icon({
   iconUrl:
@@ -89,8 +88,23 @@ var showNoOfferStores = L.control({position: 'topleft'});
 };
 showNoOfferStores.addTo(map);
 
-map.locate({ setView: true, maxZoom: 13 });
-lc = L.control.locate({ initialZoomLevel: 14, flyTo: true }).addTo(mymap);
+var lc = L.control
+  .locate({
+    position: "topright",
+    strings: {
+      title: "Show me where I am, yo!"
+    }
+  })
+  .addTo(map);
+
+var lastCenter = lc._map._lastCenter;
+var latitude = lastCenter.lat;
+var longitude = lastCenter.lng;
+var loc = L.latLng(latitude, longitude);
+console.log(loc);
+
+
+ 
 
 
 function noOffersShow() {
@@ -131,7 +145,7 @@ function searchByAjax(){
               store_name: markerData.store_name,
               latitude: markerData.latitude,
               longitude: markerData.longitude,
-              distance : simulatedUserLocation.distanceTo(storeLocation),
+              distance : loc.distanceTo(storeLocation),
               offers: [],
             };
           }
