@@ -9,12 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($uploadedFile["error"] === UPLOAD_ERR_OK) {
         $filePath = $uploadedFile["tmp_name"];
-        echo "File path: " . $filePath;
 
 $jsonContent = file_get_contents($filePath);
-if ($jsonContent === false) {
-    echo "Error: Unable to read JSON file.";
-} else {
 $data = json_decode($jsonContent, true);
 if ($data === null) {
     echo "Error: Unable to decode JSON content.";
@@ -25,18 +21,35 @@ if ($data === null) {
         $category = $product["category"];
         $subcategory = $product["subcategory"];
     
-        $sql = "INSERT IGNORE INTO product (id, name, category_id, subcategory_id) VALUES ('$id', '$name', '$category', '$subcategory')";
+        $query = "INSERT IGNORE INTO product (id, name, category_id, subcategory_id) VALUES ('$id', '$name', '$category', '$subcategory')";
+       }
+        
+
+       
+    }
+    if ($conn->query($query) === TRUE) {
+        echo "Record inserted successfully!";
+    } else {
+        echo "Error: " . $conn->error;
+    }
+
+}
+
+
+}
+
+
+
+
+else if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $query = "DELETE FROM  product WHERE 1";
     
-            if ($conn->query($sql) !== TRUE) {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }
+    if (mysqli_query($conn,$query)) {   
+        echo 1;
+    }
+    else {
+        echo "Error: " . mysqli_error($conn); // Display the MySQL error message
     }
 }
 
-}
-}
-$conn->close();
-
-echo "Data uploaded and inserted into the database.";
 ?>

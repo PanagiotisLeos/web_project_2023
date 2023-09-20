@@ -76,36 +76,47 @@
         <form class="width_50" action="../php/products_update.php" method="POST" enctype="multipart/form-data">
             <p for="dataFile">Ενημέρωση προϊόντων: </p>
             <input type="file" id="dataFile" name="dataFile" accept=".json" required>
-            <div class="center">
             <button type="submit">Upload</button>
-            </div>
         </form>
+
+        <form  method="get">
+          <button class="del" type="submit" onclick="confirm(); delAllProducts();" > Delete all</button>
+        </form>
+    
+           
+            
+            
+       
 
         <h4>Kατηγορίες</h4>
         <form class="width_50" action="../php/categories_update.php" method="POST" enctype="multipart/form-data">
             <p for="catFile">Ενημέρωση κατηγοριών: </p>
             <input type="file" id="dataFile" name="catFile" value="categories" accept=".json" required>
-            <div class="center">
-            <button type="submit">Upload categories</button>
-            </div>
+            
+            <button type="submit">Upload </button>
+            
+        </form>
+
+        <form  method="get">
+          <button class="del" type="submit" onclick="confirm(); delAllCategories();" > Delete all</button>
         </form>
 
         <h4>Yποκατηγορίες</h4>
         <form class="width_50" action="../php/subcategories_update.php" method="POST" enctype="multipart/form-data">
             <p for="subFile">Ενημέρωση υποκατηγοριών: </p>
-            <input type="file" id="dataFile" name="subFile" value="categories" accept=".json" required>
-            <div class="center">
-            <button type="submit">Upload subcategories</button>
-            </div>
+            <input type="file" id="dataFile" name="subFile" value="subcategories" accept=".json" required>
+            
+            <button type="submit">Upload </button>
+           
         </form>
     
       <h4>Τιμές προϊόντων</h4>
         <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
             <p for="catFile">Ενημέρωση τιμών προϊόντων: </p>
             <input type="file" id="priceFile" name="priceFile" value="prices" accept=".json" required>
-            <div class="center">
+           
             <button type="submit">Upload</button>
-            </div>
+           
         </form>      
     </div>
   </div>

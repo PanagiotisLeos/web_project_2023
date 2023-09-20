@@ -33,6 +33,11 @@ input[type=submit]:hover {
     background-color: red !important;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+ }
+
 .leaderboard-container {
     height: 100vh; /* Fill the entire viewport height */
     display: flex;
