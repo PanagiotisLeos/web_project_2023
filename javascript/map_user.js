@@ -96,14 +96,27 @@ lc = L.control.locate({ initialZoomLevel: 13, flyTo: true }).addTo(mymap);
 
 
 
-
+function noOffersShow() {
+  $("#showNoOfferStores").on('change', function () {
+    if ($(this).is(':checked')) {
+        markersLayer.addTo(map);
+      
+    } else {
+      
+        markersLayer.removeFrom(map);
+     
+    }
+  });
+}
 
  
 
 function searchByAjax(){
+  offersMarkersLayer.clearLayers();
+  markersLayer.clearLayers();
   $.ajax({
     url: '../php/stores.php', // Your PHP script to retrieve data
-    type: 'GET',
+    type: 'post',
     dataType: 'json',
     success: function(data) {
       var stores = {};
@@ -133,7 +146,10 @@ function searchByAjax(){
               product_name: markerData.product_name,
               product_category: markerData.category_name,
               price: markerData.price,
-              stock: markerData.stock
+              stock: markerData.stock,
+              a5ai: markerData.a5ai,
+              a5aii: markerData.a5aii
+
             });
           }
 
@@ -156,6 +172,8 @@ function searchByAjax(){
           ${storeData.offers.map(offer => `
             <p><b>${offer.product_name}</b></p>
             <p>Τιμή: <b> ${offer.price}€ </b> &nbsp; Διαθέσιμο: ${offer.stock} </p>
+            <i class="fa-lg fa-solid fa-check" ${offer.a5ai == 1 ? `style =" color:green" ` : ""}></i>
+            <i  class="fa-lg fa-solid fa-check-double" ${offer.a5aii == 1 ? `style =" color:green" ` : ""}></i>
             <hr>
           `).join('')}
           ${storeData.distance < 500 ? `
@@ -230,18 +248,7 @@ function searchByAjax(){
 
 }
 
-function noOffersShow() {
-  $("#showNoOfferStores").on('change', function () {
-    if ($(this).is(':checked')) {
-        markersLayer.addTo(map);
-      
-    } else {
-      
-        markersLayer.removeFrom(map);
-     
-    }
-  });
-}
+
 
 function populateCategoryDropdown(categories) {
   var selectElement = document.getElementById('categoryFilter');

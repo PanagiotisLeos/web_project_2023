@@ -42,8 +42,6 @@ function delAllStores() {
     })
   };
 
-<<<<<<< Updated upstream
-=======
   function delAllProducts() {
     
     $.get("../php/products_update.php", function (response) {
@@ -68,7 +66,6 @@ function delAllCategories() {
 }
 
 
->>>>>>> Stashed changes
 
   
 
@@ -145,7 +142,6 @@ function updateChart(data) {
   chart.update();
   }
 
-<<<<<<< Updated upstream
   document.getElementById('yearSelect').addEventListener('change', fetchDataAndRenderChart);
 
 
@@ -195,6 +191,4 @@ function delAllSubcategories() {
             }
         });
     }
-=======
   document.getElementById('yearSelect').addEventListener('change', fetchDataAndRenderChart);
->>>>>>> Stashed changes

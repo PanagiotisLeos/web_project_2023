@@ -104,7 +104,10 @@
               data-dismiss="modal"
             >
               Close
-            
+            </button>
+            <button type="button" class="btn btn-primary" id="saveButton">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
@@ -298,8 +301,9 @@
                 },
                 function (response) {
                   if (response == 1) {
-                    $("#exampleModalCenter").modal("hide");
                     alert("Successfully added");
+                    searchByAjax();
+                    $("#exampleModalCenter").modal("hide");
                   }
                 },
               );

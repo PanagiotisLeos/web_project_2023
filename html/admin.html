@@ -113,24 +113,85 @@
           <div class="offer-tile">
             <h5> ${offer.product_name}</h5>
             <p>Τιμή: ${offer.price}</p>
-            <p>stock: ${offer.stock}</p>
+            <p>Διαθέσιμο:  <select class="stock" id="stockDropdown" data-offer-id="${offer.offer_id}"> <option value=" ${offer.stock}" selected> ${offer.stock} </option> 
+              ${offer.stock == "ΝΑΙ" ? `<option value="ΟΧΙ">ΟΧΙ</option>` : ""}
+              ${offer.stock == "ΟΧΙ" ? `<option value="ΝΑΙ">ΝΑΙ</option>` : ""}
+              </select> </p> 
             <p>Χρήστης: ${offer.username}</p>
             <p>Ημερομηνία: ${offer.offer_date}</p>
-            <button id ="like" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="like()">Like</button>
-            <button id ="dislike" class="btn like-dislike-button" data-offer-id="<%= offer.id %>" onclick="dislike()">Dislike</button>
+            <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="like" class="ratebtn like ${offer.user_reaction == 2 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
+              <i class = "fa fa-thumbs-up fa-lg"></i>  
+            </button>
+            <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="dislike" class="ratebtn dislike ${offer.user_reaction == 1 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
+              <i class = "fa fa-thumbs-down fa-lg"></i>  
+            </button>
             <hr>
             </div>
         `;
         $('#modal-body').append(offerTile);
           
-      })
-    
-    
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          console.error('AJAX Error:', errorThrown);
+      });
+
+      
+      let stockDropdown = document.querySelectorAll(".stock");
+
+for (i of stockDropdown){
+i.addEventListener("change", function () {
+  const selectedValue = this.value; 
+  console.log(selectedValue);
+  $.post("../php/update_stock.php", {
+    offer_id: this.getAttribute("data-offer-id"),
+    stock: selectedValue,
+  },function (response) {
+      if (response == 1) {
+        searchByAjax();
       }
+    });
+});
+}
+let btns = document.querySelectorAll(".ratebtn");
+
+for (i of btns) {
+  i.addEventListener("click", function () {
+    var clicked_btn = this.id;
+    var offer_id = this.getAttribute("data-offer-id");
+    var data = {
+      offer_id: offer_id,
+      cur_react: $(this).is("#like") ? 2 : 1,
+    };
+
+    $.ajax({
+      url: "../php/rate.php",
+      type: "post",
+      data: data,
+      success: function (response) {
+        var likebtn = $(".like[data-offer-id=" + offer_id + "]");
+        var dislikebtn = $(
+          ".dislike[data-offer-id=" + offer_id + "]",
+        );
+        if (response === "newlike") {
+          likebtn.addClass("selected");
+        } else if (response === "newdislike") {
+          dislikebtn.addClass("selected");
+        } else if (response === "liketodislike") {
+          likebtn.removeClass("selected");
+          dislikebtn.addClass("selected");
+        } else if (response === "disliketolike") {
+          dislikebtn.removeClass("selected");
+          likebtn.addClass("selected");
+        } else if (response === "delete") {
+          likebtn.removeClass("selected");
+          dislikebtn.removeClass("selected");
+        }
+      },
+    });
   });
+}
+},
+error: function (jqXHR, textStatus, errorThrown) {
+console.error("AJAX Error:", errorThrown);
+},
+});
 }
   else if(button.is('#btn-new-offer')){
     $.ajax({
@@ -210,9 +271,9 @@
   // Make an AJAX request to insert data
   $.post('../php/submit_offers.php', { store_id: storeId, product: selectedProduct,price: price,stock:stock} , function(response) {
       if (response == 1){
+        alert("Successfully added");
+        searchByAjax();
         $("#exampleModalCenter").modal("hide");
-                    alert("Successfully added");
-                    searchByAjax();
             };
     }
    

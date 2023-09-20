@@ -112,6 +112,8 @@ function noOffersShow() {
  
 
 function searchByAjax(){
+  offersMarkersLayer.clearLayers();
+  markersLayer.clearLayers();
   $.ajax({
     url: '../php/stores.php', // Your PHP script to retrieve data
     type: 'GET',
@@ -145,7 +147,9 @@ function searchByAjax(){
               product_category: markerData.category_name,
               price: markerData.price,
               stock: markerData.stock,
-              offerId: markerData.offer_id
+              offerId: markerData.offer_id,
+              a5ai: markerData.a5ai,
+              a5aii: markerData.a5aii
             });
           }
 
@@ -171,6 +175,8 @@ function searchByAjax(){
             <button id = "del-offer" data-offerid="${offer.offerId}">
             <i class="fa-solid fa-trash" style = "color:red"></i>
             </button>
+            <i class="fa-lg fa-solid fa-check" ${offer.a5ai == 1 ? `style =" color:green" ` : ""}></i>
+            <i  class="fa-lg fa-solid fa-check-double" ${offer.a5aii == 1 ? `style =" color:green" ` : ""}></i>
             <hr>
           `).join('')}
           ${storeData.distance < 500 ? `
