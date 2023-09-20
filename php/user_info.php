@@ -28,11 +28,12 @@ $userDetailsJson = json_encode($userDetails);
 echo $userDetailsJson;
 }
 
-if($x==2){
-    $query1 = "SELECT store.name as store_name,product.name as product_name, price , stock ,date from offers 
-    INNER JOIN product on offers.product_id = product.id
-    INNER JOIN store on offers.store_id = store.id
-    where user_id = $id ";
+if($x==2){ //change to offers_history
+    $query1 = "SELECT store.name as store_name,product.name as product_name, price  ,date from offers_history 
+    INNER JOIN product on offers_history.product_id = product.id
+    INNER JOIN store on offers_history.store_id = store.id
+    where user_id = $id and action = 'created' 
+    order by date desc limit 15";
 
     $result=mysqli_query($conn,$query1);
     

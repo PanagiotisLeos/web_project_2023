@@ -79,15 +79,14 @@ function redirect(){
 function generateOffersHistory(offers) {
     var html = '<table>';
     html +='<h2>Προσφορές</h2>';
-    html += '<tr><th></th><th>Κατάστημα</th><th>Προϊόν</th><th>Τιμή</th><th>ΔΙαθέσιμο</th><th>Ημερομηνία</th></tr>';
+    html += '<tr><th></th><th>Κατάστημα</th><th>Προϊόν</th><th>Τιμή</th><th>Ημερομηνία</th></tr>';
     
     for (var i = 0; i < offers.length; i++) {
         html += '<tr>';
         html += '<td>' + (i + 1) + '</td>';
         html += '<td>' + offers[i].store_name + '</td>';
         html += '<td>' + offers[i].product_name + '</td>';
-        html += '<td>' + offers[i].price + '</td>';
-        html += '<td>' + offers[i].stock + '</td>';
+        html += '<td>' + offers[i].price + '€</td>'
         html += '<td>' + offers[i].date + '</td>';
         html += '</tr>';
     }
