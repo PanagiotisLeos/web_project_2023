@@ -58,7 +58,7 @@ map.addControl( controlSearch );
 var categoryFilter = L.control({position: 'topleft'});
         categoryFilter.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'categories');
-            div.innerHTML = '<select id="categoryFilter"></select>'; // Empty select element
+            div.innerHTML = '<select id="categoryFilter"></select>'; 
             return div;
 };
 categoryFilter.addTo(map);
@@ -66,13 +66,11 @@ categoryFilter.addTo(map);
 function populateCategoryDropdown(categories) {
   var selectElement = document.getElementById('categoryFilter');
 
-  // Add an "All Categories" option as the default
   var allOption = document.createElement('option');
   allOption.value = 'all';
   allOption.textContent = 'All Categories';
   selectElement.appendChild(allOption);
 
-  // Loop through categories and add options to the select element
   categories.forEach(function(category) {
     var option = document.createElement('option');
     option.textContent = category.name;
@@ -81,7 +79,6 @@ function populateCategoryDropdown(categories) {
 }
 
 
-// Ckeckbox for showing stores without offers
 var showNoOfferStores = L.control({position: 'topleft'});
         showNoOfferStores.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'showNoOfferStores');
@@ -115,12 +112,11 @@ function searchByAjax(){
   offersMarkersLayer.clearLayers();
   markersLayer.clearLayers();
   $.ajax({
-    url: '../php/stores.php', // Your PHP script to retrieve data
+    url: '../php/stores.php', 
     type: 'post',
     dataType: 'json',
     success: function(data) {
       var stores = {};
-        // Loop through the fetched data and create markers
         data.forEach(function(markerData) {
           var title=markerData.store_name;
           var storeLocation = L.latLng(markerData.latitude, markerData.longitude);
@@ -137,11 +133,9 @@ function searchByAjax(){
           }
 
         
-          // Check if the current markerData has an offer
           if (markerData.product_name && markerData.price) {
             console.log(`Adding offer to store ${storeId}`);
 
-            // Push the offer into the 'offers' array of the corresponding store
             stores[storeId].offers.push({
               product_name: markerData.product_name,
               product_category: markerData.category_name,
@@ -218,18 +212,14 @@ function searchByAjax(){
       });
       
 
-      // Populate the category dropdown
       populateCategoryDropdown(categories);
     
-      // Attach event listener to category dropdown for filtering markers
       document.getElementById('categoryFilter').addEventListener('change', function() {
         var selectedCategory = this.value;
 
-        // Loop through markers and apply the filter
         offersMarkersLayer.eachLayer(function(marker) {
-          var markerCategory = marker.options.category; // Replace with your actual property name
+          var markerCategory = marker.options.category; 
           
-          // Show markers if category is 'all' or matches the selected category
           if (selectedCategory === 'all' || markerCategory.includes(selectedCategory)) {
             marker.addTo(map);
           } else {
@@ -253,13 +243,11 @@ function searchByAjax(){
 function populateCategoryDropdown(categories) {
   var selectElement = document.getElementById('categoryFilter');
 
-  // Add an "All Categories" option as the default
   var allOption = document.createElement('option');
   allOption.value = 'all';
   allOption.textContent = 'All Categories';
   selectElement.appendChild(allOption);
 
-  // Loop through categories and add options to the select element
   categories.forEach(function(category) {
     var option = document.createElement('option');
     option.value = category;

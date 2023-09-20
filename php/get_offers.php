@@ -70,7 +70,6 @@ if($x == 2){
         }
     }
     
-    // Convert the associative array into a simple array
     $categoryArray = array_values($categories);
     
     echo json_encode($categoryArray);

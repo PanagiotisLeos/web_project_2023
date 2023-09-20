@@ -1,4 +1,3 @@
-// Function to populate the form fields with user details
 function fetchUserDetails() {
     $.ajax({
         url: '../php/user_info.php',
@@ -42,7 +41,6 @@ $("#edit_form").on("submit" , function (event) {
     }
 });
 
-      // Add your JavaScript code here
       function showPage(pageId) {
         
     

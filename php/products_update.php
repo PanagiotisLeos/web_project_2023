@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
                 $query = "INSERT IGNORE INTO product (id, name, category_id, subcategory_id) VALUES ('$id', '$name', '$category', '$subcategory')";
     
-                // Execute the query for each product
                 if ($conn->query($query) !== TRUE) {
                     echo "Error: " . $query . "<br>" . $conn->error;
                 }
@@ -36,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (mysqli_query($conn, $query)) {   
         echo 1;
     } else {
-        echo "Error: " . mysqli_error($conn); // Display the MySQL error message
+        echo "Error: " . mysqli_error($conn); 
     }
 }
 

@@ -101,10 +101,8 @@ https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.
     <script>
     $('#exampleModalCenter').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
-  var storeId = button.data('storeid'); // Extract the store_id from data attribute
-
+  var storeId = button.data('storeid'); 
   if(button.is('#btn-review')) {
-  // Make an AJAX request to fetch data based on storeId
   $.ajax({
       url: '../php/get_offers.php',
       type: 'GET',
@@ -306,17 +304,14 @@ console.error("AJAX Error:", errorThrown);
     
           });
   document.getElementById('saveButton').addEventListener('click', function() {
-  // Get the selected values from the dropdown
   const selectedProduct = document.getElementById('categoryDropdown').value;
   const price = document.getElementById('price').value;
   const stock = document.querySelector('input[name="stock"]:checked').value;
 
-  // Create an object with the selected data
   var requestData = {
     
   };
 
-  // Make an AJAX request to insert data
   $.post('../php/submit_offers.php', { store_id: storeId, product: selectedProduct,price: price,stock:stock} , function(response) {
       if (response == 1){
         alert("Successfully added");

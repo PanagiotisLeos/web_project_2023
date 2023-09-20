@@ -31,9 +31,5 @@ if ($row == 1) {
     }
     
 
-        //if($password == PASSWORD('$password'))
-      /*  if(password_verify($password, $data['password'])) {
-            $_SESSION['email'] = $data['email'];
-            echo 1; */
 ?>
 

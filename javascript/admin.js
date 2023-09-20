@@ -1,7 +1,7 @@
 
 function lboard(){
     $.ajax({
-        url: '../php/leaderboard.php', // Replace with your PHP script to fetch user data
+        url: '../php/leaderboard.php', 
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -72,33 +72,27 @@ function delAllCategories() {
   function populateMonths() {
     const monthSelect = document.getElementById("monthSelect");
   
-    // List of months
     const months = [
       "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
   
-    // Populate the month select element
     for (let i = 0; i < months.length; i++) {
       const option = document.createElement("option");
-      option.value = i + 1; // Month values typically start from 1
+      option.value = i + 1; 
       option.text = months[i];
       monthSelect.appendChild(option);
     }
   }
   
-  // Function to populate the year select element
   function populateYears() {
     const yearSelect = document.getElementById("yearSelect");
   
-    // Get the current year
     const currentYear = new Date().getFullYear();
   
-    // Define a range of years (e.g., from 10 years ago to 10 years in the future)
     const startYear = currentYear - 5;
     const endYear = currentYear;
   
-    // Populate the year select element
     for (let year = startYear; year <= endYear; year++) {
       const option = document.createElement("option");
       option.value = year;

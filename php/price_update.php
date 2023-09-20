@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (mysqli_query($conn, $query)) {
         echo 1;
     } else {
-        echo "Error: " . mysqli_error($conn); // Display the MySQL error message
+        echo "Error: " . mysqli_error($conn); 
     }
 }
 

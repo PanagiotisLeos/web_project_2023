@@ -119,14 +119,12 @@
     </script>
 
     <script>
-      // Get the modal
       $("#exampleModalCenter").on("show.bs.modal", function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var storeId = button.data("storeid"); // Extract the store_id from data attribute
+        var button = $(event.relatedTarget); 
+        var storeId = button.data("storeid"); 
         console.log(button);
 
         if (button.is("#btn-review")) {
-          // Make an AJAX request to fetch data based on storeId
           $.ajax({
             url: "../php/get_offers.php",
             type: "GET",
@@ -332,7 +330,6 @@
                 'input[name="stock"]:checked',
               ).value;
               var requestData = {};
-              // Make an AJAX request to insert data
               $.post(
                 "../php/submit_offers.php",
                 {
