@@ -137,7 +137,7 @@
                 var offerTile = `
           <div class="offer-tile">
             <h5> ${offer.product_name}</h5>
-            <p>Τιμή: ${offer.price}</p>
+            <p>Τιμή: ${offer.price}€</p>
             <p>Διαθέσιμο:  <select class="stock" id="stockDropdown" data-offer-id="${offer.offer_id}"> <option value=" ${offer.stock}" selected> ${offer.stock} </option> 
               ${offer.stock == "ΝΑΙ" ? `<option value="ΟΧΙ">ΟΧΙ</option>` : ""}
               ${offer.stock == "ΟΧΙ" ? `<option value="ΝΑΙ">ΝΑΙ</option>` : ""}
@@ -300,7 +300,6 @@
                   if (response == 1) {
                     $("#exampleModalCenter").modal("hide");
                     alert("Successfully added");
-                    searchByAjax();
                   }
                 },
               );

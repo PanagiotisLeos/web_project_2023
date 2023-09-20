@@ -83,3 +83,21 @@ a.nav-link:hover {
     display: inline-block;
     margin: 17px; 
   }
+
+  .sc-left{
+    display: inline-block;
+    position: relative;
+    top: 90px;
+    left: 42%;
+}
+
+.t-right{
+    display: inline-block;
+    position: relative;
+    top: 90px;
+}
+
+#points{
+  width: 70%;
+  position: relative;
+}

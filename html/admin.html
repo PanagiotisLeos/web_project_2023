@@ -210,7 +210,9 @@
   // Make an AJAX request to insert data
   $.post('../php/submit_offers.php', { store_id: storeId, product: selectedProduct,price: price,stock:stock} , function(response) {
       if (response == 1){
-        alert("Successfully added");
+        $("#exampleModalCenter").modal("hide");
+                    alert("Successfully added");
+                    searchByAjax();
             };
     }
    

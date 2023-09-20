@@ -40,6 +40,7 @@ var offersMarkersLayer = new L.layerGroup();
 
 offersMarkersLayer.addTo(map);
 
+
 var controlSearch = new L.Control.Search({
   position:'topright',		
   layer: markersLayer,
@@ -230,7 +231,7 @@ function searchByAjax(){
 }
 
 function noOffersShow() {
-  $("#showNoOfferStores").on('click', function () {
+  $("#showNoOfferStores").on('change', function () {
     if ($(this).is(':checked')) {
         markersLayer.addTo(map);
       
