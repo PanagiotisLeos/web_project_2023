@@ -23,9 +23,7 @@ if ($data === null) {
     
         $query = "INSERT IGNORE INTO product (id, name, category_id, subcategory_id) VALUES ('$id', '$name', '$category', '$subcategory')";
        }
-        
-
-       
+             
     }
     if ($conn->query($query) === TRUE) {
         echo "Record inserted successfully!";

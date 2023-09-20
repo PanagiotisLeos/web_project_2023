@@ -42,4 +42,16 @@ include $database ;
 
 $conn->close();
 echo("ok");
+
+else if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $query = "DELETE FROM `subcategory` WHERE 1";
+    
+    if (mysqli_query($conn,$query)) {   
+        echo 1;
+    }
+    else {
+        echo "Error: " . mysqli_error($conn); // Display the MySQL error message
+    }
+}
+
 ?>

@@ -109,6 +109,10 @@
             <button type="submit">Upload </button>
            
         </form>
+
+       <form  method="get">
+        <button class="del" type="submit" onclick="confirm(); delAllSubcategories();" > Delete all</button>
+       </form>
     
       <h4>Τιμές προϊόντων</h4>
         <form class="width_50" action="../php/price_update.php" method="POST" enctype="multipart/form-data">
@@ -117,7 +121,12 @@
            
             <button type="submit">Upload</button>
            
-        </form>      
+        </form>  
+        
+        <form  method="get">
+          <button class="del" type="submit" onclick="confirm(); delAllPrices();" > Delete all</button>
+         </form>
+
     </div>
   </div>
 

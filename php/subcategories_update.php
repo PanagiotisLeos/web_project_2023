@@ -3,7 +3,7 @@ $database = 'C:\xampp\htdocs\web_project\php\db.php';
 include $database;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $uploadedFile = $_FILES["catFile"];
+    $uploadedFile = $_FILES["subFile"];
 
     if ($uploadedFile["error"] === UPLOAD_ERR_OK) {
         $filePath = $uploadedFile["tmp_name"];
@@ -13,11 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($data === null) {
             echo "Error: Unable to decode JSON content.";
         } else {
-            foreach ($data["categories"] as $category) {
-                $categoryId = $category["id"];
-                $categoryName = $category["name"];
-              
-                $query = "INSERT IGNORE INTO category (id, name) VALUES ('$categoryId', '$categoryName')";
+            foreach ($data["subcategories"] as $subcategory) {
+                $id = $subcategory["id"];
+                $name = $subcategory["name"];
+                $categoryId = $subcategory["category_id"];
+
+                $query = "INSERT IGNORE INTO subcategory (id, name, category_id) VALUES ('$id', '$name', '$categoryId' )";
                 
                 if ($conn->query($query) !== TRUE) {
                     echo "Error: " . $query . "<br>" . $conn->error;
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 else if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $query = "DELETE FROM `category` WHERE 1";
+    $query = "DELETE FROM `subcategory` WHERE 1";
     
     if (mysqli_query($conn,$query)) {   
         echo 1;
