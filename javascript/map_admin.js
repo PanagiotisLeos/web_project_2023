@@ -1,4 +1,5 @@
 var map = L.map('map').setView([38.246242, 21.7350847], 16);
+var simulatedUserLocation = L.latLng(38.246242, 21.7350847);
 
 
 var greenIcon = new L.Icon({
@@ -91,17 +92,22 @@ showNoOfferStores.addTo(map);
 var lc = L.control
   .locate({
     position: "topright",
-    strings: {
-      title: "Show me where I am, yo!"
+    setView: true,
+    locateOptions: {
+      enableHighAccuracy: true
     }
   })
   .addTo(map);
 
-var lastCenter = lc._map._lastCenter;
-var latitude = lastCenter.lat;
-var longitude = lastCenter.lng;
-var loc = L.latLng(latitude, longitude);
-console.log(loc);
+  var loc;
+  map.on('locationfound',(e)=>{
+    var lat = e.latitude;
+    var lng = e.longitude;
+    loc = L.latLng(lat,lng);
+    searchByAjax();
+    map.stopLocate();
+})
+
 
 
  
@@ -145,7 +151,7 @@ function searchByAjax(){
               store_name: markerData.store_name,
               latitude: markerData.latitude,
               longitude: markerData.longitude,
-              distance : loc.distanceTo(storeLocation),
+              distance : simulatedUserLocation.distanceTo(storeLocation),
               offers: [],
             };
           }
@@ -186,7 +192,7 @@ function searchByAjax(){
           ${storeData.offers.map(offer => `
             <p><b>${offer.product_name}</b></p>
             <p>Τιμή: <b> ${offer.price}€ </b> &nbsp; Διαθέσιμο: ${offer.stock} </p>
-            <button id = "del-offer" data-offerid="${offer.offerId}">
+            <button style = "float: right" id = "del-offer" data-offerid="${offer.offerId}">
             <i class="fa-solid fa-trash" style = "color:red"></i>
             </button>
             <i class="fa-lg fa-solid fa-check" ${offer.a5ai == 1 ? `style =" color:green" ` : ""}></i>

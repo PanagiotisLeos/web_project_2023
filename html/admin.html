@@ -127,9 +127,11 @@ https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.
             <p>Ημερομηνία: ${offer.offer_date}</p>
             <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="like" class="ratebtn like ${offer.user_reaction == 2 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-up fa-lg"></i>  
+              <span class = "likecount" data-count = "${offer.likecount?? 0}">${offer.likecount ?? 0}</span>
             </button>
             <button ${offer.stock == "ΟΧΙ" ? `disabled`:""} id ="dislike" class="ratebtn dislike ${offer.user_reaction == 1 ? `selected`:""}" data-offer-id="${offer.offer_id}"">
               <i class = "fa fa-thumbs-down fa-lg"></i>  
+              <span class = "dislikecount" data-count = "${offer.dislikecount ?? 0}"> ${offer.dislikecount ?? 0} </span>
             </button>
             <hr>
             </div>
@@ -172,28 +174,68 @@ for (i of btns) {
       data: data,
       success: function (response) {
         var likebtn = $(".like[data-offer-id=" + offer_id + "]");
-        var dislikebtn = $(
-          ".dislike[data-offer-id=" + offer_id + "]",
-        );
-        if (response === "newlike") {
-          likebtn.addClass("selected");
-        } else if (response === "newdislike") {
-          dislikebtn.addClass("selected");
-        } else if (response === "liketodislike") {
-          likebtn.removeClass("selected");
-          dislikebtn.addClass("selected");
-        } else if (response === "disliketolike") {
-          dislikebtn.removeClass("selected");
-          likebtn.addClass("selected");
-        } else if (response === "delete") {
-          likebtn.removeClass("selected");
-          dislikebtn.removeClass("selected");
-        }
-      },
-    });
-  });
-}
-},
+                      var dislikebtn = $(".dislike[data-offer-id=" + offer_id + "]");
+
+                      const likeCountElement = $(`.likecount`);
+                      const dislikeCountElement = $(`.dislikecount` );
+
+                      let likeCount = parseInt(likeCountElement.data('count'));
+                      let dislikeCount = parseInt(dislikeCountElement.data('count'));
+
+                      
+                      if (response === "newlike") {
+                        likebtn.addClass("selected");
+                        likeCount++;
+                        likeCountElement.data('count', likeCount);
+                        likeCountElement.text(likeCount);
+
+                      } else if (response === "newdislike") {
+                        dislikebtn.addClass("selected");
+                        dislikeCount++;
+                        dislikeCountElement.data('count', dislikeCount);
+                        dislikeCountElement.text(dislikeCount);
+                        
+
+                      } else if (response === "liketodislike") {
+                        likebtn.removeClass("selected");
+                        dislikebtn.addClass("selected");
+                        dislikeCount++;
+                        dislikeCountElement.data('count', dislikeCount);
+                        dislikeCountElement.text(dislikeCount);
+                        
+                        likeCount--;
+                        likeCountElement.data('count', likeCount);
+                        likeCountElement.text(likeCount);
+
+                      } else if (response === "disliketolike") {
+                        dislikebtn.removeClass("selected");
+                        likebtn.addClass("selected");
+                        likeCount++;
+                        likeCountElement.data('count', likeCount);
+                        likeCountElement.text(likeCount);
+
+                        dislikeCount--;
+                        dislikeCountElement.data('count', dislikeCount);
+                        dislikeCountElement.text(dislikeCount);
+
+                      } else if (response === "deletelike") {
+                        likebtn.removeClass("selected");
+                        likeCount--;
+                        likeCountElement.data('count', likeCount);
+                        likeCountElement.text(likeCount);
+
+                      }
+                      else if (response === "deletedislike") {
+                        dislikebtn.removeClass("selected");
+                        dislikeCount--;
+                        dislikeCountElement.data('count', dislikeCount);
+                        dislikeCountElement.text(dislikeCount);
+                      }
+                    },
+                  });
+                });
+              }
+            },
 error: function (jqXHR, textStatus, errorThrown) {
 console.error("AJAX Error:", errorThrown);
 },

@@ -14,7 +14,9 @@ if ($x == 1){
     user.username as username , 
     offers.stock as stock , 
     offers.id as offer_id ,
-    (SELECT react from ratings where ratings.offer_id = offers.id and user.user_id = user.user_id) as user_reaction
+    (SELECT react from ratings where ratings.offer_id = offers.id and user.user_id = user.user_id) as user_reaction,
+    (SELECT COUNT(*)  FROM ratings where ratings.offer_id = offers.id and react = 2 group by ratings.offer_id) as likecount,
+    (SELECT COUNT(*)  FROM ratings where ratings.offer_id = offers.id and react = 1 group by ratings.offer_id) as dislikecount
     FROM offers 
     INNER JOIN product ON offers.product_id = product.id
     INNER JOIN user ON offers.user_id = user.user_id
