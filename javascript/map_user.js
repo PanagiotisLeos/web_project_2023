@@ -87,9 +87,24 @@ var showNoOfferStores = L.control({position: 'topleft'});
 };
 showNoOfferStores.addTo(map);
 
-map.locate({ setView: true, maxZoom: 20 });
-lc = L.control.locate({ initialZoomLevel: 13, flyTo: true }).addTo(mymap);
+var lc = L.control
+  .locate({
+    position: "topright",
+    setView: true,
+    locateOptions: {
+      enableHighAccuracy: true
+    }
+  })
+  .addTo(map);
 
+  var loc;
+  map.on('locationfound',(e)=>{
+    var lat = e.latitude;
+    var lng = e.longitude;
+    loc = L.latLng(lat,lng);
+    searchByAjax();
+    map.stopLocate();
+})
 
 
 
@@ -127,7 +142,7 @@ function searchByAjax(){
               store_name: markerData.store_name,
               latitude: markerData.latitude,
               longitude: markerData.longitude,
-              distance : simulatedUserLocation.distanceTo(storeLocation),
+              distance : loc.distanceTo(storeLocation),
               offers: [],
             };
           }
@@ -141,6 +156,7 @@ function searchByAjax(){
               product_category: markerData.category_name,
               price: markerData.price,
               stock: markerData.stock,
+              offerId: markerData.offer_id,
               a5ai: markerData.a5ai,
               a5aii: markerData.a5aii
 
