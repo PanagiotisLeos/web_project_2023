@@ -192,7 +192,7 @@ function delAllSubcategories() {
         $.post("../php/tokens.php" , function(response) { 
         
             if (response == 0) {
-                alert ("Invalid Email or Password!");
+                alert ("Error distributing tokens");
             }
             else if(response == 1) {
                 alert ("tokens distributed");

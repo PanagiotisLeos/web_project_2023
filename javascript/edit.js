@@ -21,11 +21,11 @@ $("#edit_form").on("submit" , function (event) {
     event.preventDefault();
     var username = $("#new_usr").val();
     var old_password=$("#old_pwd").val();
-    var new_password=$("#old_pwd").val();
+    var new_password=$("#new_pwd").val();
     var act = "update";
     
     if( old_password ==''){
-        alert("Please fill all fields...!!!!!!");
+        alert("Please fill out your password");
     } else {
         $.post("../php/edit.php", {action: act, username: username , old_password: old_password, new_password: new_password }, function(res){
             if(res == 1) {
