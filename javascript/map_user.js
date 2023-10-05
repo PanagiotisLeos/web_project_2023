@@ -142,7 +142,7 @@ function searchByAjax(){
               store_name: markerData.store_name,
               latitude: markerData.latitude,
               longitude: markerData.longitude,
-              distance : loc.distanceTo(storeLocation),
+              distance : simulatedUserLocation.distanceTo(storeLocation),
               offers: [],
             };
           }

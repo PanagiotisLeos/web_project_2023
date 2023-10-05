@@ -202,8 +202,8 @@
                       var likebtn = $(".like[data-offer-id=" + offer_id + "]");
                       var dislikebtn = $(".dislike[data-offer-id=" + offer_id + "]");
 
-                      const likeCountElement = $(`.likecount`);
-                      const dislikeCountElement = $(`.dislikecount` );
+                      const likeCountElement = likebtn.find(".likecount");
+                      const dislikeCountElement = dislikebtn.find(".dislikecount");
 
                       let likeCount = parseInt(likeCountElement.data('count'));
                       let dislikeCount = parseInt(dislikeCountElement.data('count'));

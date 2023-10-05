@@ -149,6 +149,11 @@ h4{
     display: block !important;
   }
 
+
+.modal-content {
+    width: 105%;
+}
+
   
 
 

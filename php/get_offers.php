@@ -8,19 +8,37 @@ $x = $_GET['x'];
 
 if ($x == 1){
     $query1 = "SELECT 
-    product.name as product_name,
-    offers.price as price, 
-    offers.date as offer_date, 
-    user.username as username , 
-    offers.stock as stock , 
-    offers.id as offer_id ,
-    (SELECT react from ratings where ratings.offer_id = offers.id and user.user_id = user.user_id) as user_reaction,
-    (SELECT COUNT(*)  FROM ratings where ratings.offer_id = offers.id and react = 2 group by ratings.offer_id) as likecount,
-    (SELECT COUNT(*)  FROM ratings where ratings.offer_id = offers.id and react = 1 group by ratings.offer_id) as dislikecount
-    FROM offers 
-    INNER JOIN product ON offers.product_id = product.id
-    INNER JOIN user ON offers.user_id = user.user_id
-    WHERE store_id = $storeId
+    product.name AS product_name,
+    offers.price AS price, 
+    offers.date AS offer_date, 
+    user.username AS username, 
+    offers.stock AS stock, 
+    offers.id AS offer_id,
+    IFNULL(user_ratings.react, 0) AS user_reaction,
+    IFNULL(like_counts.likecount, 0) AS likecount,
+    IFNULL(dislike_counts.dislikecount, 0) AS dislikecount
+FROM offers 
+INNER JOIN product ON offers.product_id = product.id
+INNER JOIN user ON offers.user_id = user.user_id
+LEFT JOIN (
+    SELECT offer_id, react
+    FROM ratings
+    WHERE user_id = $userId
+) AS user_ratings ON offers.id = user_ratings.offer_id
+LEFT JOIN (
+    SELECT offer_id, COUNT(*) AS likecount
+    FROM ratings
+    WHERE react = 2
+    GROUP BY offer_id
+) AS like_counts ON offers.id = like_counts.offer_id
+LEFT JOIN (
+    SELECT offer_id, COUNT(*) AS dislikecount
+    FROM ratings
+    WHERE react = 1
+    GROUP BY offer_id
+) AS dislike_counts ON offers.id = dislike_counts.offer_id
+WHERE offers.store_id = $storeId;
+
     ";
     $result=mysqli_query($conn,$query1);
     
