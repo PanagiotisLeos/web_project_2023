@@ -1,9 +1,4 @@
-# web_project
-Website for supermarket offers
+Welcome to our community-driven platform where you can find and share the best supermarket offers near you. Save money and time by exploring deals posted by people in your area. Join us today and start benefiting from the latest local discounts!
 
-# Installation 
 
-1. Install XAMPP
-2. Download project from github
-3. extract files in C:\xampp\htdocs
     
